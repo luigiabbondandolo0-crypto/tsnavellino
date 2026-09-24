@@ -18,30 +18,16 @@ function useCounter(target: number, duration: number, active: boolean) {
     const step = target / (duration / 16);
     const timer = setInterval(() => {
       start += step;
-      if (start >= target) {
-        setCount(target);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(start));
-      }
+      if (start >= target) { setCount(target); clearInterval(timer); }
+      else setCount(Math.floor(start));
     }, 16);
     return () => clearInterval(timer);
   }, [target, duration, active]);
   return count;
 }
 
-function StatItem({
-  value,
-  suffix,
-  label,
-  active,
-  index,
-}: {
-  value: number;
-  suffix: string;
-  label: string;
-  active: boolean;
-  index: number;
+function StatItem({ value, suffix, label, active, index }: {
+  value: number; suffix: string; label: string; active: boolean; index: number;
 }) {
   const reduce = useReducedMotion();
   const count = useCounter(value, 1600, reduce ? true : active);
@@ -52,14 +38,14 @@ function StatItem({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
-      className="text-center py-12 px-4 relative group"
+      className="text-center py-10 px-6 relative group"
     >
-      {/* Hover accent */}
-      <div className="absolute inset-0 bg-[#FEF9EE] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-sm" />
+      <div className="absolute inset-0 bg-[#FEF9EE] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       <div className="relative">
         <div
-          className="text-5xl md:text-6xl font-bold text-[#0C0A09] mb-2 tabular-nums group-hover:text-[#CA8A04] transition-colors duration-300"
+          className="text-5xl md:text-6xl font-bold text-[#0C0A09] mb-2.5 tabular-nums group-hover:text-[#CA8A04] transition-colors duration-300"
           style={{ fontFamily: "var(--font-display)" }}
+          aria-label={`${count.toLocaleString("it-IT")}${suffix} ${label}`}
         >
           {count.toLocaleString("it-IT")}
           <span className="text-[#CA8A04]">{suffix}</span>
@@ -78,12 +64,7 @@ export default function Stats() {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setActive(true);
-          observer.disconnect();
-        }
-      },
+      ([entry]) => { if (entry.isIntersecting) { setActive(true); observer.disconnect(); } },
       { threshold: 0.3 }
     );
     if (ref.current) observer.observe(ref.current);
@@ -91,7 +72,11 @@ export default function Stats() {
   }, []);
 
   return (
-    <section ref={ref} className="bg-white border-y border-[#E8E4DC] overflow-hidden">
+    <section
+      ref={ref}
+      aria-label="Statistiche TSN Avellino"
+      className="bg-white border-y border-[#E8E4DC] content-auto"
+    >
       <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-[#E8E4DC]">
         {stats.map((s, i) => (
           <StatItem key={s.label} {...s} active={active} index={i} />

@@ -7,22 +7,21 @@ import { motion, useReducedMotion } from "framer-motion";
 const services = [
   {
     icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
         <path d="M14 3L25 8.5v5c0 6.4-5 12-11 13.5C7 25.5 3 20 3 13.5v-5L14 3z" stroke="#CA8A04" strokeWidth="1.5" strokeLinejoin="round" />
         <circle cx="14" cy="13" r="3" stroke="#CA8A04" strokeWidth="1.5" />
       </svg>
     ),
     tag: "Rilascio & Rinnovo",
     title: "Porto d'Armi",
-    description:
-      "Sessioni dedicate al rilascio e rinnovo del porto d'armi per uso sportivo e caccia. Appuntamento con i nostri istruttori certificati.",
+    description: "Sessioni dedicate al rilascio e rinnovo del porto d'armi per uso sportivo e caccia. Appuntamento con i nostri istruttori certificati.",
     cta: "Prenota Sessione",
     href: "#contatti",
     image: "/images/gallery-6.jpg",
   },
   {
     icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
         <circle cx="14" cy="14" r="10" stroke="#CA8A04" strokeWidth="1.5" />
         <circle cx="14" cy="14" r="5.5" stroke="#CA8A04" strokeWidth="1" strokeDasharray="2.5 2" />
         <circle cx="14" cy="14" r="2" fill="#CA8A04" />
@@ -34,15 +33,14 @@ const services = [
     ),
     tag: "Allenamenti & Corsi",
     title: "Tiro Sportivo",
-    description:
-      "Sessioni individuali e corsi strutturati per tutti i livelli. Dal primo approccio alla preparazione agonistica con istruttori FITAV.",
+    description: "Sessioni individuali e corsi strutturati per tutti i livelli. Dal primo approccio alla preparazione agonistica con istruttori FITAV.",
     cta: "Scopri i Corsi",
     href: "#strutture",
     image: "/images/poligono-3.jpg",
   },
   {
     icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
         <rect x="5" y="3" width="18" height="22" rx="2" stroke="#CA8A04" strokeWidth="1.5" />
         <path d="M9 9h10M9 13h10M9 17h7" stroke="#CA8A04" strokeWidth="1.5" strokeLinecap="round" />
         <path d="M17 19.5l2 2 4-3.5" stroke="#CA8A04" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -50,8 +48,7 @@ const services = [
     ),
     tag: "Maneggio Armi",
     title: "Certificazioni",
-    description:
-      "Rilascio del certificato di maneggio armi richiesto per legge. Percorso completo teorico e pratico con esame finale certificato.",
+    description: "Rilascio del certificato di maneggio armi richiesto per legge. Percorso completo teorico e pratico con esame finale certificato.",
     cta: "Inizia il Percorso",
     href: "#iscrizione",
     image: "/images/gallery-1.jpg",
@@ -62,61 +59,54 @@ export default function Services() {
   const reduce = useReducedMotion();
 
   return (
-    <section id="servizi" className="py-28 px-6 bg-[#F5F3EF]">
-      <div className="max-w-7xl mx-auto">
+    <section id="servizi" aria-labelledby="servizi-title" className="tsn-section bg-[#F5F3EF] content-auto">
+      <div className="tsn-container">
 
-        {/* Header */}
         <motion.div
           initial={reduce ? {} : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.55, ease: "easeOut" }}
-          className="mb-16"
+          className="mb-14"
         >
-          <p className="text-[#CA8A04] text-[11px] tracking-[0.35em] uppercase font-medium mb-4">
-            Cosa offriamo
-          </p>
-          <h2
-            className="text-5xl md:text-6xl font-bold text-[#0C0A09] leading-tight"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
+          <p className="tsn-section-label">Cosa offriamo</p>
+          <h2 id="servizi-title" className="tsn-section-title">
             I nostri <em className="text-[#CA8A04]">servizi</em>.
           </h2>
         </motion.div>
 
-        {/* Cards */}
-        <div className="grid md:grid-cols-3 gap-5">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {services.map((s, i) => (
-            <motion.div
+            <motion.article
               key={s.title}
               initial={reduce ? {} : { opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.12, ease: "easeOut" }}
               whileHover={reduce ? {} : { y: -6 }}
-              className="group bg-white border border-[#E8E4DC] rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:border-[#CA8A04]/30 transition-all duration-300"
+              className="tsn-card overflow-hidden flex flex-col gpu"
             >
-              {/* Photo header */}
+              {/* Photo */}
               <div className="relative h-44 w-full overflow-hidden">
                 <Image
                   src={s.image}
-                  alt={s.title}
+                  alt={`${s.title} — TSN Avellino`}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                <div className="absolute top-4 left-4 w-11 h-11 bg-white/90 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent" />
+                <div className="absolute top-4 left-4 w-11 h-11 bg-white/90 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-sm">
                   {s.icon}
                 </div>
-                <span className="absolute bottom-4 left-4 inline-block bg-[#CA8A04] text-white text-[9px] tracking-[0.25em] uppercase font-bold px-2.5 py-1 rounded-full">
+                <span className="tsn-badge absolute bottom-4 left-4 !bg-[#CA8A04] !text-white !text-[9px]">
                   {s.tag}
                 </span>
               </div>
 
-              <div className="p-7 flex flex-col flex-1">
+              <div className="p-6 sm:p-7 flex flex-col flex-1">
                 <h3
-                  className="text-[#0C0A09] text-2xl font-bold mb-3 group-hover:text-[#CA8A04] transition-colors duration-200"
+                  className="text-[#0C0A09] text-xl sm:text-2xl font-bold mb-3 transition-colors duration-200"
                   style={{ fontFamily: "var(--font-display)" }}
                 >
                   {s.title}
@@ -126,15 +116,15 @@ export default function Services() {
                 </p>
                 <Link
                   href={s.href}
-                  className="inline-flex items-center gap-2 text-[#CA8A04] font-semibold text-sm hover:gap-3 transition-all duration-200 cursor-pointer group/link"
+                  className="inline-flex items-center gap-2 text-[#CA8A04] font-semibold text-sm hover:gap-3 transition-all duration-200"
                 >
                   {s.cta}
-                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none" className="group-hover/link:translate-x-1 transition-transform duration-200">
+                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
                     <path d="M2 6.5h9M8 3l3.5 3.5L8 10" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </Link>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
 
