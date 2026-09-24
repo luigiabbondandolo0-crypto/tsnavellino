@@ -192,14 +192,14 @@ export default function Contact() {
                       className="w-full bg-[#FAFAF9] border border-[#E8E4DC] rounded-lg text-[#0C0A09] px-4 py-3 text-sm focus:outline-none focus:border-[#CA8A04] focus:ring-2 focus:ring-[#CA8A04]/10 transition-all placeholder:text-[#C9C3B8] resize-none"
                     />
                   </div>
-                  <motion.button
-                    whileHover={reduce ? {} : { scale: 1.02 }}
-                    whileTap={reduce ? {} : { scale: 0.98 }}
-                    type="submit"
-                    className="w-full bg-[#CA8A04] text-white font-bold tracking-wide py-4 rounded-xl text-sm hover:bg-[#92640A] transition-colors duration-200 cursor-pointer shadow-lg shadow-[#CA8A04]/20"
-                  >
-                    Invia Messaggio
-                  </motion.button>
+                  <div className="tsn-rainbow-btn w-full p-[2px]">
+                    <button
+                      type="submit"
+                      className="relative z-10 w-full py-4 text-sm font-bold tracking-wide text-white rounded-[0.65rem] hover:opacity-90 transition-opacity duration-200 cursor-pointer"
+                    >
+                      Invia Messaggio
+                    </button>
+                  </div>
                 </form>
               )}
             </div>

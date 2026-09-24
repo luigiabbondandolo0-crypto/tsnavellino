@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
+import { RainbowButton, DownloadButton } from "@/components/ui/rainbow-button";
 
 const steps = [
   {
@@ -97,43 +97,19 @@ export default function HowToJoin() {
             <p className="text-[#A8A29E] text-[10px] tracking-[0.3em] uppercase font-medium mb-5">
               Modulistica
             </p>
-            <div className="divide-y divide-[#F5F3EF]">
+            <div className="flex flex-col gap-3">
               {downloads.map((d) => (
-                <motion.a
-                  key={d.label}
-                  href={d.href}
-                  download
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={reduce ? {} : { x: 3 }}
-                  transition={{ duration: 0.2 }}
-                  className="flex items-center justify-between gap-4 py-4 group cursor-pointer"
-                >
-                  <span className="text-[#44403C] text-sm group-hover:text-[#CA8A04] transition-colors duration-200">
-                    {d.label}
-                  </span>
-                  <div className="w-8 h-8 bg-[#F5F3EF] rounded-lg flex items-center justify-center shrink-0 group-hover:bg-[#CA8A04] transition-colors duration-200">
-                    <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
-                      <path
-                        d="M6 1v7M3 5.5l3 3 3-3M1 10h10"
-                        stroke="currentColor"
-                        strokeWidth="1.3"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="text-[#CA8A04] group-hover:text-white transition-colors duration-200"
-                      />
-                    </svg>
-                  </div>
-                </motion.a>
+                <DownloadButton key={d.label} href={d.href}>
+                  {d.label}
+                </DownloadButton>
               ))}
             </div>
           </div>
 
           {/* CTA gold card */}
           <div className="bg-[#CA8A04] rounded-2xl p-8 relative overflow-hidden">
-            {/* subtle pattern */}
             <div
-              className="absolute inset-0 opacity-[0.07]"
+              className="absolute inset-0 opacity-[0.06]"
               style={{
                 backgroundImage: `linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)`,
                 backgroundSize: "32px 32px",
@@ -150,17 +126,9 @@ export default function HowToJoin() {
                 Compila la pre-iscrizione online o vieni a trovarci.
                 Siamo aperti su appuntamento.
               </p>
-              <motion.div whileHover={reduce ? {} : { scale: 1.03 }} whileTap={reduce ? {} : { scale: 0.97 }}>
-                <Link
-                  href="#contatti"
-                  className="inline-flex items-center gap-2.5 bg-white text-[#CA8A04] font-bold tracking-wide px-7 py-3.5 rounded-xl text-sm hover:bg-[#FEF9EE] transition-colors duration-200 cursor-pointer shadow-lg"
-                >
-                  Contattaci
-                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-                    <path d="M2 6.5h9M8 3l3.5 3.5L8 10" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </Link>
-              </motion.div>
+              <RainbowButton href="#contatti" variant="light" className="tsn-rainbow-outline">
+                Contattaci
+              </RainbowButton>
             </div>
           </div>
         </motion.div>

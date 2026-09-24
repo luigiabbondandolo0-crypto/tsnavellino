@@ -48,27 +48,19 @@ body {
   color: #92640A;
 }
 
-::-webkit-scrollbar {
-  width: 5px;
-}
-::-webkit-scrollbar-track {
-  background: #F5F3EF;
-}
-::-webkit-scrollbar-thumb {
-  background: #D4CFC7;
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #CA8A04;
-}
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #F5F3EF; }
+::-webkit-scrollbar-thumb { background: #D4CFC7; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #CA8A04; }
 
+/* ── Hero SSR-safe animations ─────────────────────────── */
 @keyframes tsn-fade-up {
   from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes tsn-fade-in {
   from { opacity: 0; }
-  to { opacity: 1; }
+  to   { opacity: 1; }
 }
 .tsn-animate-1 { animation: tsn-fade-up 0.7s ease both; }
 .tsn-animate-2 { animation: tsn-fade-up 0.7s ease 0.12s both; }
@@ -76,9 +68,71 @@ body {
 .tsn-animate-4 { animation: tsn-fade-up 0.7s ease 0.36s both; }
 .tsn-animate-logo { animation: tsn-fade-in 0.5s ease both; }
 
+/* ── Rainbow / gold-glow CTA button ──────────────────── */
+@keyframes tsn-spin {
+  100% { transform: rotate(1turn); }
+}
+
+.tsn-rainbow-btn {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: 0.75rem;
+}
+.tsn-rainbow-btn::before {
+  content: '';
+  position: absolute;
+  z-index: -2;
+  left: -50%;
+  top: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: conic-gradient(
+    #CA8A04 0deg,
+    #FEF9EE 90deg,
+    #FBBF24 150deg,
+    #92640A 210deg,
+    #FEF9EE 270deg,
+    #CA8A04 360deg
+  );
+  animation: tsn-spin 3s linear infinite;
+  filter: blur(5px);
+}
+.tsn-rainbow-btn::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 2px;
+  background: #0C0A09;
+  border-radius: 0.65rem;
+}
+
+/* pill variant */
+.tsn-rainbow-pill {
+  border-radius: 9999px;
+}
+.tsn-rainbow-pill::after {
+  border-radius: 9999px;
+}
+
+/* outline variant — transparent fill so bg shows through */
+.tsn-rainbow-outline::after {
+  background: #FAFAF9;
+}
+
+/* ── Reduced motion ───────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  .tsn-animate-1, .tsn-animate-2, .tsn-animate-3, .tsn-animate-4, .tsn-animate-logo {
+  .tsn-animate-1,
+  .tsn-animate-2,
+  .tsn-animate-3,
+  .tsn-animate-4,
+  .tsn-animate-logo {
     animation: none;
+  }
+  .tsn-rainbow-btn::before {
+    animation: none;
+    background-image: none;
+    background-color: #CA8A04;
   }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

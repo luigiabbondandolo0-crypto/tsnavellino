@@ -2,18 +2,19 @@
 
 import { motion } from "framer-motion";
 
+// Lightweight: 10 paths per side, opacity-only animation (no pathOffset = no flicker)
 function FloatingPaths({ position }: { position: number }) {
-  const paths = Array.from({ length: 24 }, (_, i) => ({
+  const paths = Array.from({ length: 10 }, (_, i) => ({
     id: i,
-    d: `M-${380 - i * 5 * position} -${189 + i * 6}C-${
-      380 - i * 5 * position
-    } -${189 + i * 6} -${312 - i * 5 * position} ${216 - i * 6} ${
-      152 - i * 5 * position
-    } ${343 - i * 6}C${616 - i * 5 * position} ${470 - i * 6} ${
-      684 - i * 5 * position
-    } ${875 - i * 6} ${684 - i * 5 * position} ${875 - i * 6}`,
-    width: 0.4 + i * 0.025,
-    opacity: 0.04 + i * 0.012,
+    d: `M-${360 - i * 8 * position} -${180 + i * 7}C-${
+      360 - i * 8 * position
+    } -${180 + i * 7} -${290 - i * 8 * position} ${230 - i * 7} ${
+      160 - i * 8 * position
+    } ${350 - i * 7}C${620 - i * 8 * position} ${470 - i * 7} ${
+      680 - i * 8 * position
+    } ${880 - i * 7} ${680 - i * 8 * position} ${880 - i * 7}`,
+    width: 0.5 + i * 0.04,
+    baseOpacity: 0.03 + i * 0.018,
   }));
 
   return (
@@ -30,18 +31,13 @@ function FloatingPaths({ position }: { position: number }) {
             d={path.d}
             stroke="#CA8A04"
             strokeWidth={path.width}
-            strokeOpacity={path.opacity}
-            initial={{ pathLength: 0.3, opacity: 0 }}
-            animate={{
-              pathLength: 1,
-              opacity: [path.opacity * 0.5, path.opacity, path.opacity * 0.5],
-              pathOffset: [0, 1, 0],
-            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [path.baseOpacity * 0.4, path.baseOpacity, path.baseOpacity * 0.4] }}
             transition={{
-              duration: 18 + path.id * 0.8,
+              duration: 5 + path.id * 1.1,
               repeat: Infinity,
-              ease: "linear",
-              opacity: { duration: 6 + path.id * 0.4, repeat: Infinity, ease: "easeInOut" },
+              ease: "easeInOut",
+              delay: path.id * 0.4,
             }}
           />
         ))}
