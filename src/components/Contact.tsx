@@ -50,11 +50,7 @@ export default function Contact() {
               {
                 icon: (
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path
-                      d="M8 1C5.8 1 4 2.8 4 5c0 3.5 4 9 4 9s4-5.5 4-9c0-2.2-1.8-4-4-4z"
-                      stroke="#CA8A04"
-                      strokeWidth="1.2"
-                    />
+                    <path d="M8 1C5.8 1 4 2.8 4 5c0 3.5 4 9 4 9s4-5.5 4-9c0-2.2-1.8-4-4-4z" stroke="#CA8A04" strokeWidth="1.2" />
                     <circle cx="8" cy="5" r="1.5" stroke="#CA8A04" strokeWidth="1.2" />
                   </svg>
                 ),
@@ -65,12 +61,7 @@ export default function Contact() {
               {
                 icon: (
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path
-                      d="M2.5 3c-.3 0-.5.2-.5.5V6l1.5 4-2 2a10 10 0 005 5l2-2 4 1.5h2.5c.3 0 .5-.2.5-.5C16 8.5 7.5 0 2.5 3z"
-                      stroke="#CA8A04"
-                      strokeWidth="1.2"
-                      strokeLinejoin="round"
-                    />
+                    <path d="M2.5 3c-.3 0-.5.2-.5.5V6l1.5 4-2 2a10 10 0 005 5l2-2 4 1.5h2.5c.3 0 .5-.2.5-.5C16 8.5 7.5 0 2.5 3z" stroke="#CA8A04" strokeWidth="1.2" strokeLinejoin="round" />
                   </svg>
                 ),
                 label: "Telefono",
@@ -81,12 +72,7 @@ export default function Contact() {
                 icon: (
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <rect x="1" y="3.5" width="14" height="9" rx="1.5" stroke="#CA8A04" strokeWidth="1.2" />
-                    <path
-                      d="M1.5 5.5l6.5 4.5 6.5-4.5"
-                      stroke="#CA8A04"
-                      strokeWidth="1.2"
-                      strokeLinecap="round"
-                    />
+                    <path d="M1.5 5.5l6.5 4.5 6.5-4.5" stroke="#CA8A04" strokeWidth="1.2" strokeLinecap="round" />
                   </svg>
                 ),
                 label: "Orari",
@@ -94,9 +80,11 @@ export default function Contact() {
                 href: undefined as string | undefined,
               },
             ].map((item) => (
-              <div
+              <motion.div
                 key={item.label}
-                className="flex items-start gap-4 bg-white border border-[#E8E4DC] rounded-xl p-4"
+                whileHover={reduce ? {} : { x: 4 }}
+                transition={{ duration: 0.2 }}
+                className="flex items-start gap-4 bg-white border border-[#E8E4DC] rounded-xl p-4 hover:border-[#CA8A04]/40 hover:shadow-md transition-all duration-200 cursor-default"
               >
                 <div className="w-9 h-9 bg-[#FEF9EE] rounded-lg flex items-center justify-center shrink-0 mt-0.5">
                   {item.icon}
@@ -106,28 +94,31 @@ export default function Contact() {
                     {item.label}
                   </p>
                   {item.href ? (
-                    <a
-                      href={item.href}
-                      className="text-[#44403C] text-sm hover:text-[#CA8A04] transition-colors cursor-pointer"
-                    >
+                    <a href={item.href} className="text-[#44403C] text-sm hover:text-[#CA8A04] transition-colors cursor-pointer">
                       {item.value}
                     </a>
                   ) : (
                     <span className="text-[#44403C] text-sm">{item.value}</span>
                   )}
                 </div>
-              </div>
+              </motion.div>
             ))}
 
-            {/* Map placeholder */}
-            <div className="bg-white border border-[#E8E4DC] rounded-xl h-44 flex items-center justify-center">
+            {/* Map */}
+            <div className="bg-white border border-[#E8E4DC] rounded-xl h-48 flex items-center justify-center overflow-hidden hover:border-[#CA8A04]/40 hover:shadow-md transition-all duration-200 group">
               <div className="text-center">
+                <div className="w-12 h-12 bg-[#FEF9EE] rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-200">
+                  <svg width="20" height="20" viewBox="0 0 16 16" fill="none">
+                    <path d="M8 1C5.8 1 4 2.8 4 5c0 3.5 4 9 4 9s4-5.5 4-9c0-2.2-1.8-4-4-4z" stroke="#CA8A04" strokeWidth="1.3" />
+                    <circle cx="8" cy="5" r="1.5" stroke="#CA8A04" strokeWidth="1.3" />
+                  </svg>
+                </div>
                 <p className="text-[#C9C3B8] text-xs tracking-widest uppercase mb-2">Mappa</p>
                 <a
                   href="https://maps.google.com/?q=Via+F.+Tedesco+203+Avellino"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#CA8A04] text-sm underline underline-offset-4 hover:text-[#92640A] transition-colors cursor-pointer"
+                  className="text-[#CA8A04] text-sm font-medium underline underline-offset-4 hover:text-[#92640A] transition-colors cursor-pointer"
                 >
                   Apri su Google Maps →
                 </a>
@@ -146,22 +137,18 @@ export default function Contact() {
               {sent ? (
                 <div className="text-center py-14">
                   <motion.div
-                    initial={reduce ? {} : { scale: 0.8, opacity: 0 }}
+                    initial={reduce ? {} : { scale: 0.7, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    transition={{ type: "spring", stiffness: 200, damping: 15 }}
-                    className="w-14 h-14 bg-[#FEF9EE] rounded-full flex items-center justify-center mx-auto mb-4"
+                    transition={{ type: "spring", stiffness: 200, damping: 14 }}
+                    className="w-16 h-16 bg-[#FEF9EE] rounded-full flex items-center justify-center mx-auto mb-4"
                   >
-                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                      <path
-                        d="M4 11l5.5 5.5L18 6"
-                        stroke="#CA8A04"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
+                    <svg width="26" height="26" viewBox="0 0 22 22" fill="none">
+                      <path d="M4 11l5.5 5.5L18 6" stroke="#CA8A04" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </motion.div>
-                  <p className="text-[#0C0A09] font-semibold mb-1">Messaggio inviato!</p>
+                  <p className="text-[#0C0A09] font-semibold text-lg mb-1" style={{ fontFamily: "var(--font-display)" }}>
+                    Messaggio inviato!
+                  </p>
                   <p className="text-[#78716C] text-sm">Ti risponderemo al più presto.</p>
                 </div>
               ) : (
@@ -206,10 +193,10 @@ export default function Contact() {
                     />
                   </div>
                   <motion.button
-                    whileHover={reduce ? {} : { scale: 1.01 }}
-                    whileTap={reduce ? {} : { scale: 0.99 }}
+                    whileHover={reduce ? {} : { scale: 1.02 }}
+                    whileTap={reduce ? {} : { scale: 0.98 }}
                     type="submit"
-                    className="w-full bg-[#CA8A04] text-white font-semibold tracking-wide py-3.5 rounded-lg text-sm hover:bg-[#92640A] transition-colors cursor-pointer"
+                    className="w-full bg-[#CA8A04] text-white font-bold tracking-wide py-4 rounded-xl text-sm hover:bg-[#92640A] transition-colors duration-200 cursor-pointer shadow-lg shadow-[#CA8A04]/20"
                   >
                     Invia Messaggio
                   </motion.button>

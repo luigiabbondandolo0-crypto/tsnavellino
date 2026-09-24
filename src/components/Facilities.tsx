@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 
 const facilities = [
@@ -13,6 +14,7 @@ const facilities = [
       { label: "Postazioni", value: "Multiple" },
       { label: "Disciplina", value: "Pistola" },
     ],
+    image: "/images/poligono-2.jpg",
   },
   {
     name: "Poligono 25m",
@@ -24,6 +26,7 @@ const facilities = [
       { label: "Postazioni", value: "Multiple" },
       { label: "Disciplina", value: "Precisione" },
     ],
+    image: "/images/poligono-1.jpg",
   },
 ];
 
@@ -59,38 +62,29 @@ export default function Facilities() {
           {facilities.map((f, i) => (
             <motion.div
               key={f.name}
-              initial={reduce ? {} : { opacity: 0, y: 24 }}
+              initial={reduce ? {} : { opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.55, delay: i * 0.12, ease: "easeOut" }}
-              className="group bg-white border border-[#E8E4DC] rounded-2xl overflow-hidden shadow-sm hover:shadow-lg hover:border-[#CA8A04]/30 transition-all duration-300"
+              transition={{ duration: 0.6, delay: i * 0.15, ease: "easeOut" }}
+              whileHover={reduce ? {} : { y: -4 }}
+              className="group bg-white border border-[#E8E4DC] rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:border-[#CA8A04]/30 transition-all duration-400"
             >
-              {/* Visual placeholder */}
-              <div className="w-full h-52 bg-[#F5F3EF] flex items-center justify-center border-b border-[#E8E4DC]">
-                <div className="flex flex-col items-center gap-3 opacity-30">
-                  <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
-                    <circle cx="26" cy="26" r="20" stroke="#CA8A04" strokeWidth="1.2" />
-                    <circle
-                      cx="26"
-                      cy="26"
-                      r="12"
-                      stroke="#CA8A04"
-                      strokeWidth="1.2"
-                      strokeDasharray="3 2.5"
-                    />
-                    <circle cx="26" cy="26" r="5" stroke="#CA8A04" strokeWidth="1.2" />
-                    <circle cx="26" cy="26" r="1.5" fill="#CA8A04" />
-                  </svg>
-                  <span className="text-[#78716C] text-[10px] tracking-widest uppercase">
-                    Foto in arrivo
-                  </span>
-                </div>
+              {/* Real photo */}
+              <div className="relative w-full h-60 overflow-hidden">
+                <Image
+                  src={f.image}
+                  alt={f.name}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+                <span className="absolute top-4 left-4 inline-block bg-white/90 backdrop-blur-sm text-[#CA8A04] text-[10px] tracking-[0.25em] uppercase font-bold px-3 py-1.5 rounded-full">
+                  {f.tag}
+                </span>
               </div>
 
               <div className="p-7">
-                <span className="inline-block bg-[#FEF9EE] text-[#CA8A04] text-[10px] tracking-[0.25em] uppercase font-semibold px-3 py-1.5 rounded-full mb-5">
-                  {f.tag}
-                </span>
                 <h3
                   className="text-[#0C0A09] text-2xl font-bold mb-3"
                   style={{ fontFamily: "var(--font-display)" }}
@@ -106,7 +100,7 @@ export default function Facilities() {
                   {f.specs.map((spec) => (
                     <div key={spec.label} className="text-center">
                       <div
-                        className="text-[#0C0A09] text-lg font-bold mb-0.5"
+                        className="text-[#0C0A09] text-xl font-bold mb-0.5"
                         style={{ fontFamily: "var(--font-display)" }}
                       >
                         {spec.value}
@@ -122,22 +116,49 @@ export default function Facilities() {
           ))}
         </div>
 
+        {/* Photo gallery strip */}
+        <motion.div
+          initial={reduce ? {} : { opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+          className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-3"
+        >
+          {[
+            { src: "/images/poligono-3.jpg", alt: "Tiro pistola" },
+            { src: "/images/poligono-4.jpg", alt: "Sessione allenamento" },
+            { src: "/images/gallery-6.jpg", alt: "Atleta in gara" },
+            { src: "/images/gallery-3.jpg", alt: "Team TSN Avellino" },
+          ].map((img, i) => (
+            <motion.div
+              key={i}
+              whileHover={reduce ? {} : { scale: 1.03 }}
+              transition={{ duration: 0.25 }}
+              className="relative h-32 rounded-xl overflow-hidden border border-[#E8E4DC] cursor-pointer"
+            >
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 50vw, 25vw"
+              />
+            </motion.div>
+          ))}
+        </motion.div>
+
         {/* Address bar */}
         <motion.div
           initial={reduce ? {} : { opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
-          className="mt-6 bg-white border border-[#E8E4DC] rounded-xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4"
+          transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
+          className="mt-4 bg-white border border-[#E8E4DC] rounded-xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4"
         >
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 bg-[#FEF9EE] rounded-lg flex items-center justify-center shrink-0">
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <path
-                  d="M7 1C4.8 1 3 2.8 3 5c0 3 4 8 4 8s4-5 4-8c0-2.2-1.8-4-4-4z"
-                  stroke="#CA8A04"
-                  strokeWidth="1.2"
-                />
+                <path d="M7 1C4.8 1 3 2.8 3 5c0 3 4 8 4 8s4-5 4-8c0-2.2-1.8-4-4-4z" stroke="#CA8A04" strokeWidth="1.2" />
                 <circle cx="7" cy="5" r="1.5" stroke="#CA8A04" strokeWidth="1.2" />
               </svg>
             </div>
@@ -147,18 +168,10 @@ export default function Facilities() {
             <div className="hidden sm:block w-px h-6 bg-[#E8E4DC]" />
             <div className="w-9 h-9 bg-[#FEF9EE] rounded-lg flex items-center justify-center shrink-0">
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <path
-                  d="M2 2.5c0-.3.2-.5.5-.5h2l1 3-1.5 1.5a9 9 0 004 4l1.5-1.5 3 1v2c0 .3-.2.5-.5.5C5.6 12.5 1.5 8.4 2 2.5z"
-                  stroke="#CA8A04"
-                  strokeWidth="1.2"
-                  strokeLinejoin="round"
-                />
+                <path d="M2 2.5c0-.3.2-.5.5-.5h2l1 3-1.5 1.5a9 9 0 004 4l1.5-1.5 3 1v2c0 .3-.2.5-.5.5C5.6 12.5 1.5 8.4 2 2.5z" stroke="#CA8A04" strokeWidth="1.2" strokeLinejoin="round" />
               </svg>
             </div>
-            <a
-              href="tel:082574254"
-              className="text-[#44403C] text-sm hover:text-[#CA8A04] transition-colors cursor-pointer"
-            >
+            <a href="tel:082574254" className="text-[#44403C] text-sm hover:text-[#CA8A04] transition-colors cursor-pointer">
               0825 74254
             </a>
           </div>

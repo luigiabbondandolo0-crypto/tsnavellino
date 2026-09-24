@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 const stats = [
   { value: 1892, suffix: "", label: "Anno di fondazione" },
@@ -35,28 +35,40 @@ function StatItem({
   suffix,
   label,
   active,
+  index,
 }: {
   value: number;
   suffix: string;
   label: string;
   active: boolean;
+  index: number;
 }) {
   const reduce = useReducedMotion();
   const count = useCounter(value, 1600, reduce ? true : active);
 
   return (
-    <div className="text-center py-10 px-4">
-      <div
-        className="text-5xl md:text-6xl font-bold text-[#0C0A09] mb-2 tabular-nums"
-        style={{ fontFamily: "var(--font-display)" }}
-      >
-        {count.toLocaleString("it-IT")}
-        {suffix}
+    <motion.div
+      initial={reduce ? {} : { opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
+      className="text-center py-12 px-4 relative group"
+    >
+      {/* Hover accent */}
+      <div className="absolute inset-0 bg-[#FEF9EE] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-sm" />
+      <div className="relative">
+        <div
+          className="text-5xl md:text-6xl font-bold text-[#0C0A09] mb-2 tabular-nums group-hover:text-[#CA8A04] transition-colors duration-300"
+          style={{ fontFamily: "var(--font-display)" }}
+        >
+          {count.toLocaleString("it-IT")}
+          <span className="text-[#CA8A04]">{suffix}</span>
+        </div>
+        <div className="text-[#A8A29E] text-[11px] tracking-[0.28em] uppercase font-medium">
+          {label}
+        </div>
       </div>
-      <div className="text-[#A8A29E] text-[11px] tracking-[0.28em] uppercase font-medium">
-        {label}
-      </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -79,10 +91,10 @@ export default function Stats() {
   }, []);
 
   return (
-    <section ref={ref} className="bg-white border-y border-[#E8E4DC]">
+    <section ref={ref} className="bg-white border-y border-[#E8E4DC] overflow-hidden">
       <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-[#E8E4DC]">
-        {stats.map((s) => (
-          <StatItem key={s.label} {...s} active={active} />
+        {stats.map((s, i) => (
+          <StatItem key={s.label} {...s} active={active} index={i} />
         ))}
       </div>
     </section>

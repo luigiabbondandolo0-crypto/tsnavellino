@@ -1,18 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 
 const services = [
   {
     icon: (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-        <path
-          d="M14 3L25 8.5v5c0 6.4-5 12-11 13.5C7 25.5 3 20 3 13.5v-5L14 3z"
-          stroke="#CA8A04"
-          strokeWidth="1.5"
-          strokeLinejoin="round"
-        />
+        <path d="M14 3L25 8.5v5c0 6.4-5 12-11 13.5C7 25.5 3 20 3 13.5v-5L14 3z" stroke="#CA8A04" strokeWidth="1.5" strokeLinejoin="round" />
         <circle cx="14" cy="13" r="3" stroke="#CA8A04" strokeWidth="1.5" />
       </svg>
     ),
@@ -22,19 +18,13 @@ const services = [
       "Sessioni dedicate al rilascio e rinnovo del porto d'armi per uso sportivo e caccia. Appuntamento con i nostri istruttori certificati.",
     cta: "Prenota Sessione",
     href: "#contatti",
+    image: "/images/gallery-6.jpg",
   },
   {
     icon: (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
         <circle cx="14" cy="14" r="10" stroke="#CA8A04" strokeWidth="1.5" />
-        <circle
-          cx="14"
-          cy="14"
-          r="5.5"
-          stroke="#CA8A04"
-          strokeWidth="1"
-          strokeDasharray="2.5 2"
-        />
+        <circle cx="14" cy="14" r="5.5" stroke="#CA8A04" strokeWidth="1" strokeDasharray="2.5 2" />
         <circle cx="14" cy="14" r="2" fill="#CA8A04" />
         <line x1="14" y1="4" x2="14" y2="7.5" stroke="#CA8A04" strokeWidth="1.5" strokeLinecap="round" />
         <line x1="14" y1="20.5" x2="14" y2="24" stroke="#CA8A04" strokeWidth="1.5" strokeLinecap="round" />
@@ -48,19 +38,14 @@ const services = [
       "Sessioni individuali e corsi strutturati per tutti i livelli. Dal primo approccio alla preparazione agonistica con istruttori FITAV.",
     cta: "Scopri i Corsi",
     href: "#strutture",
+    image: "/images/poligono-3.jpg",
   },
   {
     icon: (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
         <rect x="5" y="3" width="18" height="22" rx="2" stroke="#CA8A04" strokeWidth="1.5" />
         <path d="M9 9h10M9 13h10M9 17h7" stroke="#CA8A04" strokeWidth="1.5" strokeLinecap="round" />
-        <path
-          d="M17 19.5l2 2 4-3.5"
-          stroke="#CA8A04"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
+        <path d="M17 19.5l2 2 4-3.5" stroke="#CA8A04" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
     tag: "Maneggio Armi",
@@ -69,6 +54,7 @@ const services = [
       "Rilascio del certificato di maneggio armi richiesto per legge. Percorso completo teorico e pratico con esame finale certificato.",
     cta: "Inizia il Percorso",
     href: "#iscrizione",
+    image: "/images/gallery-1.jpg",
   },
 ];
 
@@ -103,42 +89,51 @@ export default function Services() {
           {services.map((s, i) => (
             <motion.div
               key={s.title}
-              initial={reduce ? {} : { opacity: 0, y: 20 }}
+              initial={reduce ? {} : { opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.55, delay: i * 0.1, ease: "easeOut" }}
-              className="group bg-white border border-[#E8E4DC] rounded-2xl p-7 flex flex-col shadow-sm hover:shadow-lg hover:border-[#CA8A04]/30 transition-all duration-300 cursor-pointer"
+              transition={{ duration: 0.6, delay: i * 0.12, ease: "easeOut" }}
+              whileHover={reduce ? {} : { y: -6 }}
+              className="group bg-white border border-[#E8E4DC] rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:border-[#CA8A04]/30 transition-all duration-300"
             >
-              <div className="w-12 h-12 bg-[#FEF9EE] rounded-xl flex items-center justify-center mb-5">
-                {s.icon}
+              {/* Photo header */}
+              <div className="relative h-44 w-full overflow-hidden">
+                <Image
+                  src={s.image}
+                  alt={s.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                <div className="absolute top-4 left-4 w-11 h-11 bg-white/90 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                  {s.icon}
+                </div>
+                <span className="absolute bottom-4 left-4 inline-block bg-[#CA8A04] text-white text-[9px] tracking-[0.25em] uppercase font-bold px-2.5 py-1 rounded-full">
+                  {s.tag}
+                </span>
               </div>
-              <span className="inline-block self-start bg-[#FEF9EE] text-[#CA8A04] text-[10px] tracking-[0.25em] uppercase font-semibold px-3 py-1.5 rounded-full mb-4">
-                {s.tag}
-              </span>
-              <h3
-                className="text-[#0C0A09] text-2xl font-bold mb-3 group-hover:text-[#CA8A04] transition-colors duration-200"
-                style={{ fontFamily: "var(--font-display)" }}
-              >
-                {s.title}
-              </h3>
-              <p className="text-[#78716C] text-sm leading-relaxed flex-1 mb-6">
-                {s.description}
-              </p>
-              <Link
-                href={s.href}
-                className="inline-flex items-center gap-2 bg-[#CA8A04] text-white font-semibold tracking-wide px-6 py-3 rounded-lg text-sm hover:bg-[#92640A] transition-colors duration-200 cursor-pointer self-start"
-              >
-                {s.cta}
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-                  <path
-                    d="M2 6.5h9M8 3l3.5 3.5L8 10"
-                    stroke="currentColor"
-                    strokeWidth="1.3"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </Link>
+
+              <div className="p-7 flex flex-col flex-1">
+                <h3
+                  className="text-[#0C0A09] text-2xl font-bold mb-3 group-hover:text-[#CA8A04] transition-colors duration-200"
+                  style={{ fontFamily: "var(--font-display)" }}
+                >
+                  {s.title}
+                </h3>
+                <p className="text-[#78716C] text-sm leading-relaxed mb-6 flex-1">
+                  {s.description}
+                </p>
+                <Link
+                  href={s.href}
+                  className="inline-flex items-center gap-2 text-[#CA8A04] font-semibold text-sm hover:gap-3 transition-all duration-200 cursor-pointer group/link"
+                >
+                  {s.cta}
+                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none" className="group-hover/link:translate-x-1 transition-transform duration-200">
+                    <path d="M2 6.5h9M8 3l3.5 3.5L8 10" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </Link>
+              </div>
             </motion.div>
           ))}
         </div>

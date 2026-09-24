@@ -27,9 +27,9 @@ const steps = [
 ];
 
 const downloads = [
-  { label: "Modulo Domanda di Ammissione", href: "#" },
-  { label: "Certificato Medico (Fac-Simile)", href: "#" },
-  { label: "Modulo Rinnovo Porto d'Armi", href: "#" },
+  { label: "Modulo Domanda di Ammissione", href: "/docs/modulo-tsn.pdf" },
+  { label: "Certificato Medico (Fac-Simile)", href: "/docs/certificato-medico.pdf" },
+  { label: "Modulo Rinnovo Porto d'Armi", href: "/docs/modulo-porto-darmi.pdf" },
 ];
 
 export default function HowToJoin() {
@@ -59,7 +59,7 @@ export default function HowToJoin() {
             </h2>
           </motion.div>
 
-          <div className="space-y-8">
+          <div className="space-y-6">
             {steps.map((s, i) => (
               <motion.div
                 key={s.n}
@@ -67,18 +67,16 @@ export default function HowToJoin() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
-                className="flex gap-5"
+                className="flex gap-5 group"
               >
                 <div
-                  className="shrink-0 w-11 h-11 bg-white border border-[#E8E4DC] rounded-xl flex items-center justify-center text-[#CA8A04] text-sm font-bold shadow-sm"
+                  className="shrink-0 w-12 h-12 bg-white border border-[#E8E4DC] rounded-xl flex items-center justify-center text-[#CA8A04] text-sm font-bold shadow-sm group-hover:border-[#CA8A04] group-hover:bg-[#FEF9EE] transition-colors duration-200"
                   style={{ fontFamily: "var(--font-display)" }}
                 >
                   {s.n}
                 </div>
-                <div className="pt-2">
-                  <h3 className="text-[#0C0A09] font-semibold text-sm mb-1.5">
-                    {s.title}
-                  </h3>
+                <div className="pt-2.5">
+                  <h3 className="text-[#0C0A09] font-semibold text-sm mb-1.5">{s.title}</h3>
                   <p className="text-[#78716C] text-sm leading-relaxed">{s.desc}</p>
                 </div>
               </motion.div>
@@ -101,57 +99,69 @@ export default function HowToJoin() {
             </p>
             <div className="divide-y divide-[#F5F3EF]">
               {downloads.map((d) => (
-                <a
+                <motion.a
                   key={d.label}
                   href={d.href}
-                  className="flex items-center justify-between gap-4 py-3.5 group cursor-pointer"
+                  download
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={reduce ? {} : { x: 3 }}
+                  transition={{ duration: 0.2 }}
+                  className="flex items-center justify-between gap-4 py-4 group cursor-pointer"
                 >
-                  <span className="text-[#44403C] text-sm group-hover:text-[#CA8A04] transition-colors">
+                  <span className="text-[#44403C] text-sm group-hover:text-[#CA8A04] transition-colors duration-200">
                     {d.label}
                   </span>
-                  <div className="w-7 h-7 bg-[#F5F3EF] rounded-lg flex items-center justify-center shrink-0 group-hover:bg-[#FEF9EE] transition-colors">
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <div className="w-8 h-8 bg-[#F5F3EF] rounded-lg flex items-center justify-center shrink-0 group-hover:bg-[#CA8A04] transition-colors duration-200">
+                    <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
                       <path
                         d="M6 1v7M3 5.5l3 3 3-3M1 10h10"
-                        stroke="#CA8A04"
+                        stroke="currentColor"
                         strokeWidth="1.3"
                         strokeLinecap="round"
                         strokeLinejoin="round"
+                        className="text-[#CA8A04] group-hover:text-white transition-colors duration-200"
                       />
                     </svg>
                   </div>
-                </a>
+                </motion.a>
               ))}
             </div>
           </div>
 
           {/* CTA gold card */}
-          <div className="bg-[#CA8A04] rounded-2xl p-7">
-            <h3
-              className="text-white text-2xl font-bold mb-2"
-              style={{ fontFamily: "var(--font-display)" }}
-            >
-              Pronto a iniziare?
-            </h3>
-            <p className="text-white/75 text-sm leading-relaxed mb-6">
-              Compila la pre-iscrizione online o vieni a trovarci.
-              Siamo aperti su appuntamento.
-            </p>
-            <Link
-              href="#contatti"
-              className="inline-flex items-center gap-2 bg-white text-[#CA8A04] font-bold tracking-wide px-6 py-3.5 rounded-lg text-sm hover:bg-[#FEF9EE] transition-colors cursor-pointer"
-            >
-              Contattaci
-              <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-                <path
-                  d="M2 6.5h9M8 3l3.5 3.5L8 10"
-                  stroke="currentColor"
-                  strokeWidth="1.3"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </Link>
+          <div className="bg-[#CA8A04] rounded-2xl p-8 relative overflow-hidden">
+            {/* subtle pattern */}
+            <div
+              className="absolute inset-0 opacity-[0.07]"
+              style={{
+                backgroundImage: `linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)`,
+                backgroundSize: "32px 32px",
+              }}
+            />
+            <div className="relative">
+              <h3
+                className="text-white text-3xl font-bold mb-2"
+                style={{ fontFamily: "var(--font-display)" }}
+              >
+                Pronto a iniziare?
+              </h3>
+              <p className="text-white/75 text-sm leading-relaxed mb-7">
+                Compila la pre-iscrizione online o vieni a trovarci.
+                Siamo aperti su appuntamento.
+              </p>
+              <motion.div whileHover={reduce ? {} : { scale: 1.03 }} whileTap={reduce ? {} : { scale: 0.97 }}>
+                <Link
+                  href="#contatti"
+                  className="inline-flex items-center gap-2.5 bg-white text-[#CA8A04] font-bold tracking-wide px-7 py-3.5 rounded-xl text-sm hover:bg-[#FEF9EE] transition-colors duration-200 cursor-pointer shadow-lg"
+                >
+                  Contattaci
+                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+                    <path d="M2 6.5h9M8 3l3.5 3.5L8 10" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </Link>
+              </motion.div>
+            </div>
           </div>
         </motion.div>
 
