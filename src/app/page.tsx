@@ -5,6 +5,7 @@ import About from "@/components/About";
 import Services from "@/components/Services";
 import Facilities from "@/components/Facilities";
 import HowToJoin from "@/components/HowToJoin";
+import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -19,6 +20,7 @@ export default function Page() {
         <Services />
         <Facilities />
         <HowToJoin />
+        <Testimonials />
         <Contact />
       </main>
       <Footer />
