@@ -62,7 +62,24 @@ body {
   background: #CA8A04;
 }
 
+@keyframes tsn-fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes tsn-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.tsn-animate-1 { animation: tsn-fade-up 0.7s ease both; }
+.tsn-animate-2 { animation: tsn-fade-up 0.7s ease 0.12s both; }
+.tsn-animate-3 { animation: tsn-fade-up 0.7s ease 0.24s both; }
+.tsn-animate-4 { animation: tsn-fade-up 0.7s ease 0.36s both; }
+.tsn-animate-logo { animation: tsn-fade-in 0.5s ease both; }
+
 @media (prefers-reduced-motion: reduce) {
+  .tsn-animate-1, .tsn-animate-2, .tsn-animate-3, .tsn-animate-4, .tsn-animate-logo {
+    animation: none;
+  }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;

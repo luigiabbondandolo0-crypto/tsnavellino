@@ -29,7 +29,7 @@ export default function Contact() {
             Dove siamo
           </p>
           <h2
-            className="text-4xl md:text-5xl font-bold text-[#0C0A09] leading-tight"
+            className="text-5xl md:text-6xl font-bold text-[#0C0A09] leading-tight"
             style={{ fontFamily: "var(--font-display)" }}
           >
             Contattaci.
@@ -50,18 +50,27 @@ export default function Contact() {
               {
                 icon: (
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M8 1C5.8 1 4 2.8 4 5c0 3.5 4 9 4 9s4-5.5 4-9c0-2.2-1.8-4-4-4z" stroke="#CA8A04" strokeWidth="1.2" />
+                    <path
+                      d="M8 1C5.8 1 4 2.8 4 5c0 3.5 4 9 4 9s4-5.5 4-9c0-2.2-1.8-4-4-4z"
+                      stroke="#CA8A04"
+                      strokeWidth="1.2"
+                    />
                     <circle cx="8" cy="5" r="1.5" stroke="#CA8A04" strokeWidth="1.2" />
                   </svg>
                 ),
                 label: "Indirizzo",
                 value: "Via F. Tedesco 203, Avellino (AV)",
+                href: undefined as string | undefined,
               },
               {
                 icon: (
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M2.5 3c-.3 0-.5.2-.5.5V6l1.5 4-2 2a10 10 0 005 5l2-2 4 1.5h2.5c.3 0 .5-.2.5-.5C16 8.5 7.5 0 2.5 3z"
-                      stroke="#CA8A04" strokeWidth="1.2" strokeLinejoin="round" />
+                    <path
+                      d="M2.5 3c-.3 0-.5.2-.5.5V6l1.5 4-2 2a10 10 0 005 5l2-2 4 1.5h2.5c.3 0 .5-.2.5-.5C16 8.5 7.5 0 2.5 3z"
+                      stroke="#CA8A04"
+                      strokeWidth="1.2"
+                      strokeLinejoin="round"
+                    />
                   </svg>
                 ),
                 label: "Telefono",
@@ -72,21 +81,35 @@ export default function Contact() {
                 icon: (
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <rect x="1" y="3.5" width="14" height="9" rx="1.5" stroke="#CA8A04" strokeWidth="1.2" />
-                    <path d="M1.5 5.5l6.5 4.5 6.5-4.5" stroke="#CA8A04" strokeWidth="1.2" strokeLinecap="round" />
+                    <path
+                      d="M1.5 5.5l6.5 4.5 6.5-4.5"
+                      stroke="#CA8A04"
+                      strokeWidth="1.2"
+                      strokeLinecap="round"
+                    />
                   </svg>
                 ),
                 label: "Orari",
                 value: "Su appuntamento",
+                href: undefined as string | undefined,
               },
             ].map((item) => (
-              <div key={item.label} className="flex items-start gap-4 bg-white border border-[#E8E4DC] rounded-xl p-4">
+              <div
+                key={item.label}
+                className="flex items-start gap-4 bg-white border border-[#E8E4DC] rounded-xl p-4"
+              >
                 <div className="w-9 h-9 bg-[#FEF9EE] rounded-lg flex items-center justify-center shrink-0 mt-0.5">
                   {item.icon}
                 </div>
                 <div>
-                  <p className="text-[#A8A29E] text-[10px] tracking-[0.25em] uppercase font-medium mb-0.5">{item.label}</p>
+                  <p className="text-[#A8A29E] text-[10px] tracking-[0.25em] uppercase font-medium mb-0.5">
+                    {item.label}
+                  </p>
                   {item.href ? (
-                    <a href={item.href} className="text-[#44403C] text-sm hover:text-[#CA8A04] transition-colors cursor-pointer">
+                    <a
+                      href={item.href}
+                      className="text-[#44403C] text-sm hover:text-[#CA8A04] transition-colors cursor-pointer"
+                    >
                       {item.value}
                     </a>
                   ) : (
@@ -119,7 +142,7 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.55, delay: 0.2, ease: "easeOut" }}
           >
-            <div className="bg-white border border-[#E8E4DC] rounded-2xl p-7">
+            <div className="bg-white border border-[#E8E4DC] rounded-2xl p-7 shadow-sm">
               {sent ? (
                 <div className="text-center py-14">
                   <motion.div
@@ -129,7 +152,13 @@ export default function Contact() {
                     className="w-14 h-14 bg-[#FEF9EE] rounded-full flex items-center justify-center mx-auto mb-4"
                   >
                     <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                      <path d="M4 11l5.5 5.5L18 6" stroke="#CA8A04" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      <path
+                        d="M4 11l5.5 5.5L18 6"
+                        stroke="#CA8A04"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
                     </svg>
                   </motion.div>
                   <p className="text-[#0C0A09] font-semibold mb-1">Messaggio inviato!</p>
@@ -142,7 +171,10 @@ export default function Contact() {
                     { id: "email", label: "Email", type: "email", placeholder: "mario@email.com" },
                   ].map((f) => (
                     <div key={f.id}>
-                      <label htmlFor={f.id} className="block text-[#44403C] text-[11px] tracking-[0.22em] uppercase font-medium mb-2">
+                      <label
+                        htmlFor={f.id}
+                        className="block text-[#44403C] text-[11px] tracking-[0.22em] uppercase font-medium mb-2"
+                      >
                         {f.label}
                       </label>
                       <input
@@ -157,7 +189,10 @@ export default function Contact() {
                     </div>
                   ))}
                   <div>
-                    <label htmlFor="messaggio" className="block text-[#44403C] text-[11px] tracking-[0.22em] uppercase font-medium mb-2">
+                    <label
+                      htmlFor="messaggio"
+                      className="block text-[#44403C] text-[11px] tracking-[0.22em] uppercase font-medium mb-2"
+                    >
                       Messaggio
                     </label>
                     <textarea
@@ -174,7 +209,7 @@ export default function Contact() {
                     whileHover={reduce ? {} : { scale: 1.01 }}
                     whileTap={reduce ? {} : { scale: 0.99 }}
                     type="submit"
-                    className="w-full bg-[#CA8A04] text-white text-[11px] font-bold tracking-[0.22em] uppercase py-4 rounded-lg hover:bg-[#92640A] transition-colors cursor-pointer"
+                    className="w-full bg-[#CA8A04] text-white font-semibold tracking-wide py-3.5 rounded-lg text-sm hover:bg-[#92640A] transition-colors cursor-pointer"
                   >
                     Invia Messaggio
                   </motion.button>

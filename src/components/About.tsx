@@ -3,23 +3,34 @@
 import { motion, useReducedMotion } from "framer-motion";
 
 const timeline = [
-  { year: "1892", text: "Fondazione della sezione di Avellino del Tiro a Segno Nazionale." },
-  { year: "1900s", text: "Espansione delle strutture e crescita della comunità di tiratori irpini." },
-  { year: "Oggi", text: "Due poligoni interni, corsi per principianti ed esperti, servizi porto d'armi." },
+  {
+    year: "1892",
+    text: "Fondazione della sezione di Avellino del Tiro a Segno Nazionale.",
+  },
+  {
+    year: "1900s",
+    text: "Espansione delle strutture e crescita della comunità di tiratori irpini.",
+  },
+  {
+    year: "Oggi",
+    text: "Due poligoni interni, corsi per principianti ed esperti, servizi porto d'armi.",
+  },
 ];
 
 export default function About() {
   const reduce = useReducedMotion();
-  const fadeUp = reduce
-    ? {}
-    : { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
 
   return (
     <section id="storia" className="py-28 px-6 bg-[#FAFAF9]">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 lg:gap-24 items-start">
 
         {/* Left: timeline card */}
-        <motion.div {...fadeUp} transition={{ duration: 0.6, ease: "easeOut" }}>
+        <motion.div
+          initial={reduce ? {} : { opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           <div className="relative bg-white border border-[#E8E4DC] rounded-2xl p-8 lg:p-10 shadow-sm">
             {/* Corner accents */}
             <div className="absolute -top-px -left-px w-10 h-10 border-t-2 border-l-2 border-[#CA8A04] rounded-tl-2xl" />
@@ -52,7 +63,9 @@ export default function About() {
                     >
                       {item.year}
                     </span>
-                    <p className="text-[#78716C] text-sm leading-relaxed">{item.text}</p>
+                    <p className="text-[#78716C] text-sm leading-relaxed">
+                      {item.text}
+                    </p>
                   </div>
                 </motion.div>
               ))}
@@ -62,7 +75,9 @@ export default function About() {
 
         {/* Right: copy */}
         <motion.div
-          {...fadeUp}
+          initial={reduce ? {} : { opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
           className="pt-4"
         >
@@ -70,7 +85,7 @@ export default function About() {
             Chi siamo
           </p>
           <h2
-            className="text-4xl md:text-5xl font-bold text-[#0C0A09] leading-[1.05] mb-8"
+            className="text-5xl md:text-6xl font-bold text-[#0C0A09] leading-[1.05] mb-8"
             style={{ fontFamily: "var(--font-display)" }}
           >
             134 anni di{" "}

@@ -4,10 +4,26 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 
 const steps = [
-  { n: "01", title: "Visita Medica", desc: "Effettua la visita medica presso un medico sportivo o il tuo medico di base e richiedi il certificato di idoneità fisica." },
-  { n: "02", title: "Documenti", desc: "Prepara: documento d'identità valido, codice fiscale, certificato medico e 2 foto tessera." },
-  { n: "03", title: "Pre-Iscrizione", desc: "Compila il modulo online o vieni in sede. Ti contatteremo per fissare l'appuntamento." },
-  { n: "04", title: "Benvenuto al TSN", desc: "Sei ufficialmente socio. Accedi ai poligoni, corsi e a tutti i servizi della struttura." },
+  {
+    n: "01",
+    title: "Visita Medica",
+    desc: "Effettua la visita medica presso un medico sportivo o il tuo medico di base e richiedi il certificato di idoneità fisica.",
+  },
+  {
+    n: "02",
+    title: "Documenti",
+    desc: "Prepara: documento d'identità valido, codice fiscale, certificato medico e 2 foto tessera.",
+  },
+  {
+    n: "03",
+    title: "Pre-Iscrizione",
+    desc: "Compila il modulo online o vieni in sede. Ti contatteremo per fissare l'appuntamento.",
+  },
+  {
+    n: "04",
+    title: "Benvenuto al TSN",
+    desc: "Sei ufficialmente socio. Accedi ai poligoni, corsi e a tutti i servizi della struttura.",
+  },
 ];
 
 const downloads = [
@@ -35,7 +51,7 @@ export default function HowToJoin() {
               Come iscriversi
             </p>
             <h2
-              className="text-4xl font-bold text-[#0C0A09] leading-tight mb-14"
+              className="text-5xl md:text-6xl font-bold text-[#0C0A09] leading-tight mb-14"
               style={{ fontFamily: "var(--font-display)" }}
             >
               Inizia il tuo percorso{" "}
@@ -54,13 +70,15 @@ export default function HowToJoin() {
                 className="flex gap-5"
               >
                 <div
-                  className="shrink-0 w-10 h-10 bg-white border border-[#E8E4DC] rounded-xl flex items-center justify-center text-[#CA8A04] text-sm font-bold"
+                  className="shrink-0 w-11 h-11 bg-white border border-[#E8E4DC] rounded-xl flex items-center justify-center text-[#CA8A04] text-sm font-bold shadow-sm"
                   style={{ fontFamily: "var(--font-display)" }}
                 >
                   {s.n}
                 </div>
                 <div className="pt-2">
-                  <h3 className="text-[#0C0A09] font-semibold text-sm mb-1.5">{s.title}</h3>
+                  <h3 className="text-[#0C0A09] font-semibold text-sm mb-1.5">
+                    {s.title}
+                  </h3>
                   <p className="text-[#78716C] text-sm leading-relaxed">{s.desc}</p>
                 </div>
               </motion.div>
@@ -77,7 +95,7 @@ export default function HowToJoin() {
           className="flex flex-col gap-5"
         >
           {/* Download card */}
-          <div className="bg-white border border-[#E8E4DC] rounded-2xl p-7">
+          <div className="bg-white border border-[#E8E4DC] rounded-2xl p-7 shadow-sm">
             <p className="text-[#A8A29E] text-[10px] tracking-[0.3em] uppercase font-medium mb-5">
               Modulistica
             </p>
@@ -93,7 +111,13 @@ export default function HowToJoin() {
                   </span>
                   <div className="w-7 h-7 bg-[#F5F3EF] rounded-lg flex items-center justify-center shrink-0 group-hover:bg-[#FEF9EE] transition-colors">
                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                      <path d="M6 1v7M3 5.5l3 3 3-3M1 10h10" stroke="#CA8A04" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+                      <path
+                        d="M6 1v7M3 5.5l3 3 3-3M1 10h10"
+                        stroke="#CA8A04"
+                        strokeWidth="1.3"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
                     </svg>
                   </div>
                 </a>
@@ -115,11 +139,17 @@ export default function HowToJoin() {
             </p>
             <Link
               href="#contatti"
-              className="inline-flex items-center gap-2 bg-white text-[#CA8A04] text-[11px] font-bold tracking-[0.2em] uppercase px-6 py-3 rounded-lg hover:bg-[#FEF9EE] transition-colors cursor-pointer"
+              className="inline-flex items-center gap-2 bg-white text-[#CA8A04] font-bold tracking-wide px-6 py-3.5 rounded-lg text-sm hover:bg-[#FEF9EE] transition-colors cursor-pointer"
             >
               Contattaci
               <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-                <path d="M2 6.5h9M8 3l3.5 3.5L8 10" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+                <path
+                  d="M2 6.5h9M8 3l3.5 3.5L8 10"
+                  stroke="currentColor"
+                  strokeWidth="1.3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </svg>
             </Link>
           </div>
