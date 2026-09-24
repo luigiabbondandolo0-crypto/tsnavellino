@@ -20,7 +20,7 @@ export default function About() {
   const reduce = useReducedMotion();
 
   return (
-    <section id="storia" aria-labelledby="storia-title" className="tsn-section bg-[#FAFAF9] content-auto">
+    <section id="storia" aria-labelledby="storia-title" className="tsn-section bg-[#FAFAF9]">
       <div className="tsn-container">
 
         <motion.div
@@ -121,13 +121,13 @@ export default function About() {
                 key={i}
                 whileHover={reduce ? {} : { scale: 1.02 }}
                 transition={{ duration: 0.22 }}
-                className={`relative rounded-xl overflow-hidden border border-[#E8E4DC] shadow-sm gpu ${photo.span}`}
+                className={`relative rounded-xl overflow-hidden border border-[#E8E4DC] shadow-sm ${photo.span}`}
               >
                 <Image
                   src={photo.src}
                   alt={photo.alt}
                   fill
-                  className="object-cover hover:scale-105 transition-transform duration-500"
+                  className="object-cover transition-transform duration-500"
                   sizes="(max-width: 768px) 50vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />

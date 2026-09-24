@@ -14,7 +14,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contatti" aria-labelledby="contatti-title" className="tsn-section bg-[#FAFAF9] content-auto">
+    <section id="contatti" aria-labelledby="contatti-title" className="tsn-section bg-[#FAFAF9]">
       <div className="tsn-container">
 
         {/* Header */}

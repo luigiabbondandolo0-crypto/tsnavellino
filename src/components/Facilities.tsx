@@ -39,7 +39,7 @@ export default function Facilities() {
   const reduce = useReducedMotion();
 
   return (
-    <section id="strutture" aria-labelledby="strutture-title" className="tsn-section bg-[#FAFAF9] content-auto">
+    <section id="strutture" aria-labelledby="strutture-title" className="tsn-section bg-[#FAFAF9]">
       <div className="tsn-container">
 
         <motion.div
@@ -66,7 +66,7 @@ export default function Facilities() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.15, ease: "easeOut" }}
               whileHover={reduce ? {} : { y: -5 }}
-              className="tsn-card overflow-hidden gpu"
+              className="tsn-card overflow-hidden"
             >
               <div className="relative w-full h-60 overflow-hidden">
                 <Image
@@ -74,7 +74,7 @@ export default function Facilities() {
                   alt={`${f.name} — TSN Avellino`}
                   fill
                   priority={i === 0}
-                  className="object-cover hover:scale-105 transition-transform duration-500"
+                  className="object-cover transition-transform duration-500"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
@@ -126,7 +126,7 @@ export default function Facilities() {
               key={i}
               whileHover={reduce ? {} : { scale: 1.03 }}
               transition={{ duration: 0.22 }}
-              className="relative h-32 rounded-xl overflow-hidden border border-[#E8E4DC] cursor-pointer gpu"
+              className="relative h-32 rounded-xl overflow-hidden border border-[#E8E4DC] cursor-pointer"
             >
               <Image
                 src={img.src}

@@ -59,7 +59,7 @@ export default function Services() {
   const reduce = useReducedMotion();
 
   return (
-    <section id="servizi" aria-labelledby="servizi-title" className="tsn-section bg-[#F5F3EF] content-auto">
+    <section id="servizi" aria-labelledby="servizi-title" className="tsn-section bg-[#F5F3EF]">
       <div className="tsn-container">
 
         <motion.div
@@ -84,7 +84,7 @@ export default function Services() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.12, ease: "easeOut" }}
               whileHover={reduce ? {} : { y: -6 }}
-              className="tsn-card overflow-hidden flex flex-col gpu"
+              className="tsn-card overflow-hidden flex flex-col"
             >
               {/* Photo */}
               <div className="relative h-44 w-full overflow-hidden">
@@ -92,7 +92,7 @@ export default function Services() {
                   src={s.image}
                   alt={`${s.title} — TSN Avellino`}
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="object-cover group-transition-transform duration-500"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent" />

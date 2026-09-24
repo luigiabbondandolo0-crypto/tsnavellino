@@ -75,7 +75,7 @@ export default function Stats() {
     <section
       ref={ref}
       aria-label="Statistiche TSN Avellino"
-      className="bg-white border-y border-[#E8E4DC] content-auto"
+      className="bg-white border-y border-[#E8E4DC]"
     >
       <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-[#E8E4DC]">
         {stats.map((s, i) => (

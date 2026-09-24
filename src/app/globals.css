@@ -207,14 +207,10 @@
   }
   .scrollbar-hide::-webkit-scrollbar { display: none; }
 
-  /* GPU-hint animated elements */
-  .gpu { will-change: transform; }
+  /* .gpu removed — broad will-change:transform causes layer bloat + scroll flicker */
 }
 
-/* ── Custom Utilities ──────────────────────────────────── */
-@utility content-auto {
-  content-visibility: auto;
-}
+/* content-auto removed — causes scroll repaint flicker */
 
 /* ── Hero SSR-safe keyframes ───────────────────────────── */
 @keyframes tsn-fade-up {
@@ -241,6 +237,10 @@
   z-index: 0;
   overflow: hidden;
   border-radius: 0.75rem;
+  /* isolate compositor layer so the spinning ::before
+     doesn't repaint page content on scroll */
+  isolation: isolate;
+  transform: translateZ(0);
 }
 .tsn-rainbow-btn::before {
   content: '';
@@ -260,6 +260,8 @@
   );
   animation: tsn-spin 3s linear infinite;
   filter: blur(5px);
+  /* keep on own GPU layer */
+  will-change: transform;
 }
 .tsn-rainbow-btn::after {
   content: '';
