@@ -5,7 +5,7 @@ import { motion, useReducedMotion } from "framer-motion";
 
 const timeline = [
   { year: "1892", text: "Fondazione della sezione di Avellino del Tiro a Segno Nazionale." },
-  { year: "1900s", text: "Espansione delle strutture e crescita della comunità di tiratori irpini." },
+  { year: "1900", text: "Espansione delle strutture e crescita della comunità di tiratori irpini." },
   { year: "Oggi", text: "Due poligoni interni, corsi per principianti ed esperti, servizi porto d'armi." },
 ];
 
