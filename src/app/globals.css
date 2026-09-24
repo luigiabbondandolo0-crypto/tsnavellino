@@ -1,18 +1,20 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: #080808;
-  --color-surface: #0f0f0f;
-  --color-surface-2: #1a1a1a;
-  --color-border: #222222;
-  --color-gold: #ca8a04;
-  --color-gold-light: #eab308;
-  --color-gold-dim: #78350f;
-  --color-text: #f5f0e8;
-  --color-text-muted: #666666;
-  --color-text-faint: #333333;
-  --font-display: var(--font-cormorant);
-  --font-sans: var(--font-jost);
+  --color-bg: #FAFAF9;
+  --color-surface: #FFFFFF;
+  --color-surface-alt: #F5F3EF;
+  --color-border: #E8E4DC;
+  --color-border-strong: #C9C3B8;
+  --color-gold: #CA8A04;
+  --color-gold-light: #FEF9EE;
+  --color-gold-dark: #92640A;
+  --color-text: #0C0A09;
+  --color-text-2: #44403C;
+  --color-text-3: #78716C;
+  --color-text-muted: #A8A29E;
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
 }
 
 * {
@@ -26,104 +28,45 @@ html {
 }
 
 body {
-  background: #080808;
-  color: #f5f0e8;
-  font-family: var(--font-jost), system-ui, sans-serif;
+  background: #FAFAF9;
+  color: #0C0A09;
+  font-family: var(--font-sans), system-ui, sans-serif;
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Accessible focus states */
 :focus-visible {
-  outline: 2px solid #ca8a04;
+  outline: 2px solid #CA8A04;
   outline-offset: 3px;
+  border-radius: 2px;
 }
 
 ::selection {
-  background: #ca8a0433;
-  color: #eab308;
+  background: #FEF9EE;
+  color: #92640A;
 }
 
 ::-webkit-scrollbar {
   width: 5px;
 }
-
 ::-webkit-scrollbar-track {
-  background: #080808;
+  background: #F5F3EF;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: #2a2a2a;
+  background: #D4CFC7;
   border-radius: 3px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: #ca8a04;
+  background: #CA8A04;
 }
 
-/* Grain texture overlay for premium feel */
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.03;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-}
-
-/* Animations — respect prefers-reduced-motion */
-@media (prefers-reduced-motion: no-preference) {
-  @keyframes fadeUp {
-    from {
-      opacity: 0;
-      transform: translateY(24px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  .animate-fade-up {
-    animation: fadeUp 0.8s ease forwards;
-  }
-
-  .animate-fade-in {
-    animation: fadeIn 1s ease forwards;
-  }
-}
-
-/* Fallback: no animation for reduced-motion users */
 @media (prefers-reduced-motion: reduce) {
-  @keyframes fadeUp {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  .animate-fade-up,
-  .animate-fade-in {
-    animation: fadeIn 0.3s ease forwards;
-  }
-
-  * {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

@@ -1,166 +1,149 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 
 const facilities = [
   {
     name: "Poligono 12m",
-    description:
-      "Linea di fuoco da 12 metri ideale per pistola e introduzione al tiro. Attrezzatura moderna, illuminazione professionale e bersagli motorizzati.",
+    tag: "Poligono Corto",
+    description: "Linea di fuoco da 12 metri ideale per pistola e introduzione al tiro. Attrezzatura moderna, illuminazione professionale e bersagli motorizzati.",
     specs: [
-      { label: "Distanza", value: "12 metri" },
+      { label: "Distanza", value: "12 m" },
       { label: "Postazioni", value: "Multiple" },
       { label: "Disciplina", value: "Pistola" },
     ],
-    tag: "Poligono Corto",
   },
   {
     name: "Poligono 25m",
-    description:
-      "Il poligono principale per il tiro di precisione. Adatto ad atleti agonisti e tiratori esperti che vogliono affinare la tecnica a distanze regolamentari.",
-    specs: [
-      { label: "Distanza", value: "25 metri" },
-      { label: "Postazioni", value: "Multiple" },
-      { label: "Disciplina", value: "Pistola / Precisione" },
-    ],
     tag: "Poligono Principale",
+    description: "Poligono per il tiro di precisione. Adatto ad atleti agonisti e tiratori esperti che vogliono affinare la tecnica a distanze regolamentari.",
+    specs: [
+      { label: "Distanza", value: "25 m" },
+      { label: "Postazioni", value: "Multiple" },
+      { label: "Disciplina", value: "Precisione" },
+    ],
   },
 ];
 
 export default function Facilities() {
-  const ref = useRef<HTMLElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
+  const reduce = useReducedMotion();
 
   return (
-    <section id="strutture" ref={ref} className="py-32 px-6">
+    <section id="strutture" className="py-28 px-6 bg-[#FAFAF9]">
       <div className="max-w-7xl mx-auto">
+
         {/* Header */}
-        <div
-          className="mb-20"
-          style={{ animation: visible ? "fadeUp 0.7s ease 0.1s both" : "none" }}
+        <motion.div
+          initial={reduce ? {} : { opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.55, ease: "easeOut" }}
+          className="mb-16"
         >
-          <p className="text-[#ca8a04] text-xs tracking-[0.4em] uppercase mb-4">
+          <p className="text-[#CA8A04] text-[11px] tracking-[0.35em] uppercase font-medium mb-4">
             Le nostre strutture
           </p>
-          <h2 className="font-['var(--font-cormorant)'] text-4xl md:text-5xl font-bold text-[#f5f0e8] leading-tight">
+          <h2
+            className="text-4xl md:text-5xl font-bold text-[#0C0A09] leading-tight"
+            style={{ fontFamily: "var(--font-display)" }}
+          >
             Due poligoni,{" "}
-            <span className="text-[#ca8a04] italic">un&apos;unica</span>{" "}
-            eccellenza.
+            <em className="text-[#CA8A04]">un&apos;unica</em> eccellenza.
           </h2>
-        </div>
+        </motion.div>
 
-        {/* Facility cards */}
-        <div className="grid md:grid-cols-2 gap-8">
+        {/* Cards */}
+        <div className="grid md:grid-cols-2 gap-6">
           {facilities.map((f, i) => (
-            <div
+            <motion.div
               key={f.name}
-              className="relative border border-[#1f1f1f] p-10 group hover:border-[#ca8a04]/30 transition-colors duration-500"
-              style={{
-                animation: visible ? `fadeUp 0.8s ease ${0.2 + i * 0.2}s both` : "none",
-              }}
+              initial={reduce ? {} : { opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.55, delay: i * 0.12, ease: "easeOut" }}
+              className="group bg-white border border-[#E8E4DC] rounded-2xl overflow-hidden hover:shadow-md hover:border-[#CA8A04]/30 transition-all duration-300"
             >
-              {/* Corner accents */}
-              <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-[#ca8a04]/0 group-hover:border-[#ca8a04] transition-colors duration-500" />
-              <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-[#ca8a04]/0 group-hover:border-[#ca8a04] transition-colors duration-500" />
-
-              {/* Tag */}
-              <div className="inline-block border border-[#222] text-[#555] text-[10px] tracking-[0.3em] uppercase px-3 py-1.5 mb-8">
-                {f.tag}
-              </div>
-
               {/* Visual placeholder */}
-              <div className="w-full h-48 bg-[#0f0f0f] border border-[#1a1a1a] flex items-center justify-center mb-8 overflow-hidden">
-                <div className="flex flex-col items-center gap-4 opacity-30">
-                  <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                    <circle cx="24" cy="24" r="18" stroke="#ca8a04" strokeWidth="1" />
-                    <circle cx="24" cy="24" r="10" stroke="#ca8a04" strokeWidth="1" strokeDasharray="3 3" />
-                    <circle cx="24" cy="24" r="4" stroke="#ca8a04" strokeWidth="1" />
-                    <circle cx="24" cy="24" r="1.5" fill="#ca8a04" />
+              <div className="w-full h-52 bg-[#F5F3EF] flex items-center justify-center border-b border-[#E8E4DC]">
+                <div className="flex flex-col items-center gap-3 opacity-30">
+                  <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+                    <circle cx="26" cy="26" r="20" stroke="#CA8A04" strokeWidth="1.2" />
+                    <circle cx="26" cy="26" r="12" stroke="#CA8A04" strokeWidth="1.2" strokeDasharray="3 2.5" />
+                    <circle cx="26" cy="26" r="5" stroke="#CA8A04" strokeWidth="1.2" />
+                    <circle cx="26" cy="26" r="1.5" fill="#CA8A04" />
                   </svg>
-                  <span className="text-[#444] text-xs tracking-widest uppercase">
+                  <span className="text-[#78716C] text-[10px] tracking-widest uppercase">
                     Foto in arrivo
                   </span>
                 </div>
               </div>
 
-              <h3 className="font-['var(--font-cormorant)'] text-2xl font-bold text-[#f5f0e8] mb-4">
-                {f.name}
-              </h3>
-              <p className="text-[#555] text-sm leading-relaxed mb-8">
-                {f.description}
-              </p>
+              <div className="p-7">
+                <span className="inline-block bg-[#FEF9EE] text-[#CA8A04] text-[10px] tracking-[0.25em] uppercase font-semibold px-3 py-1.5 rounded-full mb-5">
+                  {f.tag}
+                </span>
+                <h3
+                  className="text-[#0C0A09] text-2xl font-bold mb-3"
+                  style={{ fontFamily: "var(--font-display)" }}
+                >
+                  {f.name}
+                </h3>
+                <p className="text-[#78716C] text-sm leading-relaxed mb-7">
+                  {f.description}
+                </p>
 
-              {/* Specs */}
-              <div className="grid grid-cols-3 gap-4 pt-8 border-t border-[#1a1a1a]">
-                {f.specs.map((spec) => (
-                  <div key={spec.label}>
-                    <div className="text-[#ca8a04] text-sm font-semibold mb-1">
-                      {spec.value}
+                {/* Specs */}
+                <div className="grid grid-cols-3 gap-3 pt-6 border-t border-[#E8E4DC]">
+                  {f.specs.map((spec) => (
+                    <div key={spec.label} className="text-center">
+                      <div
+                        className="text-[#0C0A09] text-lg font-bold mb-0.5"
+                        style={{ fontFamily: "var(--font-display)" }}
+                      >
+                        {spec.value}
+                      </div>
+                      <div className="text-[#A8A29E] text-[10px] tracking-[0.2em] uppercase">
+                        {spec.label}
+                      </div>
                     </div>
-                    <div className="text-[#444] text-[10px] tracking-[0.2em] uppercase">
-                      {spec.label}
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
-        {/* Address banner */}
-        <div
-          className="mt-8 border border-[#1a1a1a] bg-[#0a0a0a] p-6 flex flex-col md:flex-row items-center justify-between gap-4"
-          style={{
-            animation: visible ? "fadeUp 0.7s ease 0.7s both" : "none",
-          }}
+        {/* Address bar */}
+        <motion.div
+          initial={reduce ? {} : { opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
+          className="mt-6 bg-white border border-[#E8E4DC] rounded-xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4"
         >
-          <div className="flex items-center gap-4">
-            <div className="w-8 h-8 border border-[#222] flex items-center justify-center shrink-0">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 bg-[#FEF9EE] rounded-lg flex items-center justify-center shrink-0">
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <path
-                  d="M7 1C4.8 1 3 2.8 3 5c0 3 4 8 4 8s4-5 4-8c0-2.2-1.8-4-4-4z"
-                  stroke="#ca8a04"
-                  strokeWidth="1.2"
-                />
-                <circle cx="7" cy="5" r="1.5" stroke="#ca8a04" strokeWidth="1.2" />
+                <path d="M7 1C4.8 1 3 2.8 3 5c0 3 4 8 4 8s4-5 4-8c0-2.2-1.8-4-4-4z" stroke="#CA8A04" strokeWidth="1.2" />
+                <circle cx="7" cy="5" r="1.5" stroke="#CA8A04" strokeWidth="1.2" />
               </svg>
             </div>
-            <span className="text-[#666] text-sm">
-              Via F. Tedesco 203, Avellino (AV)
-            </span>
+            <span className="text-[#44403C] text-sm">Via F. Tedesco 203, Avellino (AV)</span>
           </div>
-          <div className="flex items-center gap-4">
-            <div className="w-px h-8 bg-[#1a1a1a] hidden md:block" />
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path
-                d="M2 2.5c0-.3.2-.5.5-.5h2l1 3-1.5 1.5a9 9 0 004 4l1.5-1.5 3 1v2c0 .3-.2.5-.5.5C5.6 12.5 1.5 8.4 2 2.5z"
-                stroke="#ca8a04"
-                strokeWidth="1.2"
-                strokeLinejoin="round"
-              />
-            </svg>
-            <a
-              href="tel:082574254"
-              className="text-[#666] text-sm hover:text-[#ca8a04] transition-colors"
-            >
+          <div className="flex items-center gap-3">
+            <div className="hidden sm:block w-px h-6 bg-[#E8E4DC]" />
+            <div className="w-9 h-9 bg-[#FEF9EE] rounded-lg flex items-center justify-center shrink-0">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M2 2.5c0-.3.2-.5.5-.5h2l1 3-1.5 1.5a9 9 0 004 4l1.5-1.5 3 1v2c0 .3-.2.5-.5.5C5.6 12.5 1.5 8.4 2 2.5z"
+                  stroke="#CA8A04" strokeWidth="1.2" strokeLinejoin="round" />
+              </svg>
+            </div>
+            <a href="tel:082574254" className="text-[#44403C] text-sm hover:text-[#CA8A04] transition-colors cursor-pointer">
               0825 74254
             </a>
           </div>
-        </div>
+        </motion.div>
+
       </div>
     </section>
   );

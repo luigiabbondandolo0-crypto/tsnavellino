@@ -1,29 +1,13 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
 import Link from "next/link";
+import { motion, useReducedMotion } from "framer-motion";
 
 const steps = [
-  {
-    n: "01",
-    title: "Visita Medica",
-    desc: "Effettua la visita medica presso un medico sportivo o il tuo medico di base. Richiedi il certificato di idoneità fisica.",
-  },
-  {
-    n: "02",
-    title: "Documenti",
-    desc: "Prepara: documento d'identità valido, codice fiscale, certificato medico e 2 foto tessera.",
-  },
-  {
-    n: "03",
-    title: "Pre-Iscrizione",
-    desc: "Compila il modulo di pre-iscrizione online o vieni direttamente in sede. Ti contatteremo per fissare l'appuntamento.",
-  },
-  {
-    n: "04",
-    title: "Benvenuto al TSN",
-    desc: "Dopo la registrazione sei ufficialmente socio. Accedi ai poligoni, corsi e a tutti i servizi della nostra struttura.",
-  },
+  { n: "01", title: "Visita Medica", desc: "Effettua la visita medica presso un medico sportivo o il tuo medico di base e richiedi il certificato di idoneità fisica." },
+  { n: "02", title: "Documenti", desc: "Prepara: documento d'identità valido, codice fiscale, certificato medico e 2 foto tessera." },
+  { n: "03", title: "Pre-Iscrizione", desc: "Compila il modulo online o vieni in sede. Ti contatteremo per fissare l'appuntamento." },
+  { n: "04", title: "Benvenuto al TSN", desc: "Sei ufficialmente socio. Accedi ai poligoni, corsi e a tutti i servizi della struttura." },
 ];
 
 const downloads = [
@@ -33,128 +17,114 @@ const downloads = [
 ];
 
 export default function HowToJoin() {
-  const ref = useRef<HTMLElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
+  const reduce = useReducedMotion();
 
   return (
-    <section id="iscrizione" ref={ref} className="py-32 px-6 bg-[#0a0a0a]">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-20">
-          {/* Steps */}
-          <div>
-            <div
-              style={{ animation: visible ? "fadeUp 0.7s ease 0.1s both" : "none" }}
-            >
-              <p className="text-[#ca8a04] text-xs tracking-[0.4em] uppercase mb-4">
-                Come iscriversi
-              </p>
-              <h2 className="font-['var(--font-cormorant)'] text-4xl font-bold text-[#f5f0e8] leading-tight mb-16">
-                Inizia il tuo percorso{" "}
-                <span className="text-[#ca8a04] italic">in 4 passi</span>.
-              </h2>
-            </div>
+    <section id="iscrizione" className="py-28 px-6 bg-[#F5F3EF]">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 lg:gap-24">
 
-            <div className="space-y-8">
-              {steps.map((s, i) => (
+        {/* Steps */}
+        <div>
+          <motion.div
+            initial={reduce ? {} : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.55, ease: "easeOut" }}
+          >
+            <p className="text-[#CA8A04] text-[11px] tracking-[0.35em] uppercase font-medium mb-4">
+              Come iscriversi
+            </p>
+            <h2
+              className="text-4xl font-bold text-[#0C0A09] leading-tight mb-14"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Inizia il tuo percorso{" "}
+              <em className="text-[#CA8A04]">in 4 passi</em>.
+            </h2>
+          </motion.div>
+
+          <div className="space-y-8">
+            {steps.map((s, i) => (
+              <motion.div
+                key={s.n}
+                initial={reduce ? {} : { opacity: 0, x: -16 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
+                className="flex gap-5"
+              >
                 <div
-                  key={s.n}
-                  className="flex gap-6"
-                  style={{
-                    animation: visible ? `fadeUp 0.7s ease ${0.2 + i * 0.12}s both` : "none",
-                  }}
+                  className="shrink-0 w-10 h-10 bg-white border border-[#E8E4DC] rounded-xl flex items-center justify-center text-[#CA8A04] text-sm font-bold"
+                  style={{ fontFamily: "var(--font-display)" }}
                 >
-                  <div className="shrink-0 pt-1">
-                    <span className="font-['var(--font-cormorant)'] text-3xl font-bold text-[#ca8a04]/20">
-                      {s.n}
-                    </span>
-                  </div>
-                  <div>
-                    <h3 className="text-[#f5f0e8] font-semibold mb-2">{s.title}</h3>
-                    <p className="text-[#555] text-sm leading-relaxed">{s.desc}</p>
-                  </div>
+                  {s.n}
                 </div>
+                <div className="pt-2">
+                  <h3 className="text-[#0C0A09] font-semibold text-sm mb-1.5">{s.title}</h3>
+                  <p className="text-[#78716C] text-sm leading-relaxed">{s.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Downloads + CTA */}
+        <motion.div
+          initial={reduce ? {} : { opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
+          className="flex flex-col gap-5"
+        >
+          {/* Download card */}
+          <div className="bg-white border border-[#E8E4DC] rounded-2xl p-7">
+            <p className="text-[#A8A29E] text-[10px] tracking-[0.3em] uppercase font-medium mb-5">
+              Modulistica
+            </p>
+            <div className="divide-y divide-[#F5F3EF]">
+              {downloads.map((d) => (
+                <a
+                  key={d.label}
+                  href={d.href}
+                  className="flex items-center justify-between gap-4 py-3.5 group cursor-pointer"
+                >
+                  <span className="text-[#44403C] text-sm group-hover:text-[#CA8A04] transition-colors">
+                    {d.label}
+                  </span>
+                  <div className="w-7 h-7 bg-[#F5F3EF] rounded-lg flex items-center justify-center shrink-0 group-hover:bg-[#FEF9EE] transition-colors">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                      <path d="M6 1v7M3 5.5l3 3 3-3M1 10h10" stroke="#CA8A04" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+                </a>
               ))}
             </div>
           </div>
 
-          {/* Download + CTA */}
-          <div
-            style={{ animation: visible ? "fadeUp 0.7s ease 0.4s both" : "none" }}
-          >
-            {/* Downloads */}
-            <div className="border border-[#1a1a1a] p-8 mb-8">
-              <div className="relative">
-                <div className="absolute -top-px -left-px w-8 h-8 border-t border-l border-[#ca8a04]" />
-                <div className="absolute -bottom-px -right-px w-8 h-8 border-b border-r border-[#ca8a04]" />
-              </div>
-              <p className="text-[#ca8a04] text-xs tracking-[0.4em] uppercase mb-6">
-                Modulistica
-              </p>
-              <div className="space-y-3">
-                {downloads.map((d) => (
-                  <a
-                    key={d.label}
-                    href={d.href}
-                    className="flex items-center justify-between gap-4 py-3 border-b border-[#1a1a1a] last:border-0 group hover:text-[#ca8a04] transition-colors"
-                  >
-                    <span className="text-[#666] group-hover:text-[#ca8a04] text-sm transition-colors">
-                      {d.label}
-                    </span>
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 14 14"
-                      fill="none"
-                      className="text-[#333] group-hover:text-[#ca8a04] shrink-0 transition-colors"
-                    >
-                      <path
-                        d="M7 2v7M4 6l3 3 3-3M2 11h10"
-                        stroke="currentColor"
-                        strokeWidth="1.2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* CTA card */}
-            <div className="bg-[#ca8a04] p-8">
-              <h3 className="font-['var(--font-cormorant)'] text-2xl font-bold text-[#080808] mb-3">
-                Pronto a iniziare?
-              </h3>
-              <p className="text-[#5a3e10] text-sm leading-relaxed mb-6">
-                Compila la pre-iscrizione online o vieni a trovarci. Siamo aperti
-                su appuntamento.
-              </p>
-              <Link
-                href="#contatti"
-                className="inline-flex items-center gap-3 bg-[#080808] text-[#ca8a04] text-xs font-semibold tracking-[0.25em] uppercase px-6 py-3 hover:bg-[#111] transition-colors"
-              >
-                Contattaci
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </Link>
-            </div>
+          {/* CTA gold card */}
+          <div className="bg-[#CA8A04] rounded-2xl p-7">
+            <h3
+              className="text-white text-2xl font-bold mb-2"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Pronto a iniziare?
+            </h3>
+            <p className="text-white/75 text-sm leading-relaxed mb-6">
+              Compila la pre-iscrizione online o vieni a trovarci.
+              Siamo aperti su appuntamento.
+            </p>
+            <Link
+              href="#contatti"
+              className="inline-flex items-center gap-2 bg-white text-[#CA8A04] text-[11px] font-bold tracking-[0.2em] uppercase px-6 py-3 rounded-lg hover:bg-[#FEF9EE] transition-colors cursor-pointer"
+            >
+              Contattaci
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+                <path d="M2 6.5h9M8 3l3.5 3.5L8 10" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </Link>
           </div>
-        </div>
+        </motion.div>
+
       </div>
     </section>
   );

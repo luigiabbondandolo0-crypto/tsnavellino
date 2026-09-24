@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 
 const links = [
   { href: "#storia", label: "Storia" },
@@ -16,37 +17,44 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
+    const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-[#080808]/95 backdrop-blur-md border-b border-[#1a1a1a]"
-          : "bg-transparent"
-      }`}
-    >
-      <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <header className="fixed top-0 left-0 right-0 z-50 flex flex-col items-center pt-4 px-4">
+      {/* Floating navbar pill */}
+      <motion.nav
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className={`w-full max-w-6xl flex items-center justify-between px-6 h-14 rounded-xl transition-all duration-300 ${
+          scrolled
+            ? "bg-white/95 backdrop-blur-md shadow-[0_2px_20px_rgba(0,0,0,0.08)] border border-[#E8E4DC]"
+            : "bg-white/70 backdrop-blur-sm border border-[#E8E4DC]/60"
+        }`}
+      >
         {/* Logo */}
-        <Link href="/" className="flex flex-col leading-none group">
-          <span className="text-[#ca8a04] font-['var(--font-cormorant)'] font-bold text-lg tracking-widest uppercase">
+        <Link href="/" className="flex items-baseline gap-2 cursor-pointer">
+          <span
+            className="text-[#0C0A09] font-bold text-xl tracking-widest uppercase"
+            style={{ fontFamily: "var(--font-display)" }}
+          >
             T.S.N.
           </span>
-          <span className="text-[10px] tracking-[0.3em] text-[#666] uppercase">
-            Avellino
+          <span className="text-[10px] tracking-[0.3em] text-[#A8A29E] uppercase font-medium hidden sm:block">
+            Avellino · 1892
           </span>
         </Link>
 
         {/* Desktop links */}
-        <ul className="hidden md:flex items-center gap-8">
+        <ul className="hidden md:flex items-center gap-7">
           {links.map((l) => (
             <li key={l.href}>
               <Link
                 href={l.href}
-                className="text-xs tracking-[0.2em] uppercase text-[#888] hover:text-[#ca8a04] transition-colors duration-300"
+                className="text-[11px] tracking-[0.18em] uppercase text-[#78716C] hover:text-[#CA8A04] transition-colors duration-200 font-medium cursor-pointer"
               >
                 {l.label}
               </Link>
@@ -57,58 +65,67 @@ export default function Navbar() {
         {/* CTA */}
         <Link
           href="#iscrizione"
-          className="hidden md:inline-flex items-center gap-2 border border-[#ca8a04]/40 text-[#ca8a04] text-xs tracking-[0.2em] uppercase px-5 py-2.5 hover:bg-[#ca8a04] hover:text-[#080808] transition-all duration-300"
+          className="hidden md:inline-flex items-center gap-2 bg-[#CA8A04] text-white text-[11px] tracking-[0.18em] uppercase font-semibold px-5 py-2.5 rounded-lg hover:bg-[#92640A] transition-colors duration-200 cursor-pointer"
         >
           Pre-Iscrizione
         </Link>
 
         {/* Mobile burger */}
         <button
-          className="md:hidden w-8 h-8 flex flex-col justify-center gap-1.5 cursor-pointer"
+          className="md:hidden w-9 h-9 flex flex-col justify-center gap-[5px] cursor-pointer"
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Menu"
+          aria-label={menuOpen ? "Chiudi menu" : "Apri menu"}
         >
-          <span
-            className={`block h-px bg-[#ca8a04] transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-[7px]" : ""}`}
+          <motion.span
+            animate={{ rotate: menuOpen ? 45 : 0, y: menuOpen ? 7 : 0 }}
+            className="block h-[1.5px] bg-[#44403C] origin-center transition-colors"
           />
-          <span
-            className={`block h-px bg-[#ca8a04] transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`}
+          <motion.span
+            animate={{ opacity: menuOpen ? 0 : 1 }}
+            className="block h-[1.5px] bg-[#44403C]"
           />
-          <span
-            className={`block h-px bg-[#ca8a04] transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-[7px]" : ""}`}
+          <motion.span
+            animate={{ rotate: menuOpen ? -45 : 0, y: menuOpen ? -7 : 0 }}
+            className="block h-[1.5px] bg-[#44403C] origin-center"
           />
         </button>
-      </nav>
+      </motion.nav>
 
-      {/* Mobile menu */}
-      <div
-        className={`md:hidden overflow-hidden transition-all duration-500 bg-[#080808]/98 backdrop-blur-md ${
-          menuOpen ? "max-h-96 border-b border-[#1a1a1a]" : "max-h-0"
-        }`}
-      >
-        <ul className="flex flex-col px-6 py-4 gap-4">
-          {links.map((l) => (
-            <li key={l.href}>
-              <Link
-                href={l.href}
-                onClick={() => setMenuOpen(false)}
-                className="block text-sm tracking-[0.2em] uppercase text-[#888] hover:text-[#ca8a04] transition-colors py-1"
-              >
-                {l.label}
-              </Link>
-            </li>
-          ))}
-          <li>
-            <Link
-              href="#iscrizione"
-              onClick={() => setMenuOpen(false)}
-              className="inline-flex border border-[#ca8a04]/40 text-[#ca8a04] text-xs tracking-[0.2em] uppercase px-4 py-2 mt-2"
-            >
-              Pre-Iscrizione
-            </Link>
-          </li>
-        </ul>
-      </div>
+      {/* Mobile dropdown */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -8, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -8, scale: 0.98 }}
+            transition={{ duration: 0.2 }}
+            className="w-full max-w-6xl mt-2 bg-white/98 backdrop-blur-md border border-[#E8E4DC] rounded-xl shadow-lg px-6 py-5"
+          >
+            <ul className="flex flex-col gap-3">
+              {links.map((l) => (
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
+                    onClick={() => setMenuOpen(false)}
+                    className="block text-sm tracking-[0.15em] uppercase text-[#44403C] hover:text-[#CA8A04] transition-colors py-1 cursor-pointer"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+              <li className="pt-2 border-t border-[#E8E4DC]">
+                <Link
+                  href="#iscrizione"
+                  onClick={() => setMenuOpen(false)}
+                  className="inline-flex bg-[#CA8A04] text-white text-[11px] tracking-[0.18em] uppercase font-semibold px-5 py-2.5 rounded-lg cursor-pointer"
+                >
+                  Pre-Iscrizione
+                </Link>
+              </li>
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
