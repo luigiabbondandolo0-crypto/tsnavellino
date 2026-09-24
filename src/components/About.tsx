@@ -32,10 +32,10 @@ export default function About() {
         >
           {/* Ornamental frame */}
           <div className="relative border border-[#1f1f1f] p-8 md:p-12">
-            <div className="absolute -top-px -left-px w-12 h-12 border-t border-l border-[#c9a04a]" />
-            <div className="absolute -bottom-px -right-px w-12 h-12 border-b border-r border-[#c9a04a]" />
+            <div className="absolute -top-px -left-px w-12 h-12 border-t border-l border-[#ca8a04]" />
+            <div className="absolute -bottom-px -right-px w-12 h-12 border-b border-r border-[#ca8a04]" />
 
-            <div className="text-[#c9a04a] text-xs tracking-[0.4em] uppercase mb-6">
+            <div className="text-[#ca8a04] text-xs tracking-[0.4em] uppercase mb-6">
               La nostra storia
             </div>
 
@@ -47,11 +47,11 @@ export default function About() {
               ].map((item) => (
                 <div key={item.year} className="flex gap-6">
                   <div className="flex flex-col items-center">
-                    <div className="w-2 h-2 rounded-full bg-[#c9a04a] mt-1.5 shrink-0" />
+                    <div className="w-2 h-2 rounded-full bg-[#ca8a04] mt-1.5 shrink-0" />
                     <div className="w-px flex-1 bg-[#1f1f1f] mt-2" />
                   </div>
                   <div>
-                    <div className="font-['var(--font-playfair)'] text-[#c9a04a] text-lg font-bold mb-1">
+                    <div className="font-['var(--font-cormorant)'] text-[#ca8a04] text-lg font-bold mb-1">
                       {item.year}
                     </div>
                     <p className="text-[#666] text-sm leading-relaxed">{item.text}</p>
@@ -68,13 +68,13 @@ export default function About() {
             animation: visible ? "fadeUp 0.8s ease 0.3s both" : "none",
           }}
         >
-          <p className="text-[#c9a04a] text-xs tracking-[0.4em] uppercase mb-4">
+          <p className="text-[#ca8a04] text-xs tracking-[0.4em] uppercase mb-4">
             Chi siamo
           </p>
-          <h2 className="font-['var(--font-playfair)'] text-4xl md:text-5xl font-bold text-[#f0ece4] leading-tight mb-8">
+          <h2 className="font-['var(--font-cormorant)'] text-4xl md:text-5xl font-bold text-[#f5f0e8] leading-tight mb-8">
             134 anni di{" "}
-            <span className="text-[#c9a04a] italic">disciplina</span> e{" "}
-            <span className="text-[#c9a04a] italic">passione</span>.
+            <span className="text-[#ca8a04] italic">disciplina</span> e{" "}
+            <span className="text-[#ca8a04] italic">passione</span>.
           </h2>
           <div className="space-y-5 text-[#666] leading-relaxed">
             <p>
@@ -96,7 +96,7 @@ export default function About() {
           </div>
 
           <div className="mt-10 pt-10 border-t border-[#1a1a1a]">
-            <blockquote className="font-['var(--font-playfair)'] text-xl italic text-[#888]">
+            <blockquote className="font-['var(--font-cormorant)'] text-xl italic text-[#888]">
               &ldquo;134 anni di storia con tanta cordialità.&rdquo;
             </blockquote>
           </div>

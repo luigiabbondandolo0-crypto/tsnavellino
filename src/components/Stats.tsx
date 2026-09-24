@@ -50,7 +50,7 @@ function StatItem({
       className="text-center py-8 px-4"
       style={{ animation: active ? `fadeUp 0.6s ease ${delay}ms both` : "none" }}
     >
-      <div className="font-['var(--font-playfair)'] text-4xl md:text-5xl font-bold text-[#c9a04a] mb-2">
+      <div className="font-['var(--font-cormorant)'] text-4xl md:text-5xl font-bold text-[#ca8a04] mb-2">
         {prefix}
         {count.toLocaleString("it-IT")}
         {suffix}

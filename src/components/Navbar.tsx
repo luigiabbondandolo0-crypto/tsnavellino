@@ -32,7 +32,7 @@ export default function Navbar() {
       <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex flex-col leading-none group">
-          <span className="text-[#c9a04a] font-['var(--font-playfair)'] font-bold text-lg tracking-widest uppercase">
+          <span className="text-[#ca8a04] font-['var(--font-cormorant)'] font-bold text-lg tracking-widest uppercase">
             T.S.N.
           </span>
           <span className="text-[10px] tracking-[0.3em] text-[#666] uppercase">
@@ -46,7 +46,7 @@ export default function Navbar() {
             <li key={l.href}>
               <Link
                 href={l.href}
-                className="text-xs tracking-[0.2em] uppercase text-[#888] hover:text-[#c9a04a] transition-colors duration-300"
+                className="text-xs tracking-[0.2em] uppercase text-[#888] hover:text-[#ca8a04] transition-colors duration-300"
               >
                 {l.label}
               </Link>
@@ -57,25 +57,25 @@ export default function Navbar() {
         {/* CTA */}
         <Link
           href="#iscrizione"
-          className="hidden md:inline-flex items-center gap-2 border border-[#c9a04a]/40 text-[#c9a04a] text-xs tracking-[0.2em] uppercase px-5 py-2.5 hover:bg-[#c9a04a] hover:text-[#080808] transition-all duration-300"
+          className="hidden md:inline-flex items-center gap-2 border border-[#ca8a04]/40 text-[#ca8a04] text-xs tracking-[0.2em] uppercase px-5 py-2.5 hover:bg-[#ca8a04] hover:text-[#080808] transition-all duration-300"
         >
           Pre-Iscrizione
         </Link>
 
         {/* Mobile burger */}
         <button
-          className="md:hidden w-8 h-8 flex flex-col justify-center gap-1.5"
+          className="md:hidden w-8 h-8 flex flex-col justify-center gap-1.5 cursor-pointer"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Menu"
         >
           <span
-            className={`block h-px bg-[#c9a04a] transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-[7px]" : ""}`}
+            className={`block h-px bg-[#ca8a04] transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-[7px]" : ""}`}
           />
           <span
-            className={`block h-px bg-[#c9a04a] transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`}
+            className={`block h-px bg-[#ca8a04] transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`}
           />
           <span
-            className={`block h-px bg-[#c9a04a] transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-[7px]" : ""}`}
+            className={`block h-px bg-[#ca8a04] transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-[7px]" : ""}`}
           />
         </button>
       </nav>
@@ -92,7 +92,7 @@ export default function Navbar() {
               <Link
                 href={l.href}
                 onClick={() => setMenuOpen(false)}
-                className="block text-sm tracking-[0.2em] uppercase text-[#888] hover:text-[#c9a04a] transition-colors py-1"
+                className="block text-sm tracking-[0.2em] uppercase text-[#888] hover:text-[#ca8a04] transition-colors py-1"
               >
                 {l.label}
               </Link>
@@ -102,7 +102,7 @@ export default function Navbar() {
             <Link
               href="#iscrizione"
               onClick={() => setMenuOpen(false)}
-              className="inline-flex border border-[#c9a04a]/40 text-[#c9a04a] text-xs tracking-[0.2em] uppercase px-4 py-2 mt-2"
+              className="inline-flex border border-[#ca8a04]/40 text-[#ca8a04] text-xs tracking-[0.2em] uppercase px-4 py-2 mt-2"
             >
               Pre-Iscrizione
             </Link>

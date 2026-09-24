@@ -8,7 +8,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="mb-4">
-              <div className="text-[#c9a04a] font-['var(--font-playfair)'] font-bold text-2xl tracking-widest">
+              <div className="text-[#ca8a04] font-['var(--font-cormorant)'] font-bold text-2xl tracking-widest">
                 T.S.N.
               </div>
               <div className="text-xs tracking-[0.3em] text-[#444] uppercase">
@@ -40,7 +40,7 @@ export default function Footer() {
                 <li key={l.href}>
                   <Link
                     href={l.href}
-                    className="text-[#444] text-sm hover:text-[#c9a04a] transition-colors"
+                    className="text-[#444] text-sm hover:text-[#ca8a04] transition-colors"
                   >
                     {l.label}
                   </Link>
@@ -63,7 +63,7 @@ export default function Footer() {
                 <li key={d}>
                   <a
                     href="#"
-                    className="text-[#444] text-sm hover:text-[#c9a04a] transition-colors flex items-center gap-2"
+                    className="text-[#444] text-sm hover:text-[#ca8a04] transition-colors flex items-center gap-2"
                   >
                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
                       <path d="M5 1v6M2.5 4.5l2.5 2.5 2.5-2.5M1 8.5h8" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />

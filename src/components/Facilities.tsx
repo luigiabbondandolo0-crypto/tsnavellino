@@ -53,12 +53,12 @@ export default function Facilities() {
           className="mb-20"
           style={{ animation: visible ? "fadeUp 0.7s ease 0.1s both" : "none" }}
         >
-          <p className="text-[#c9a04a] text-xs tracking-[0.4em] uppercase mb-4">
+          <p className="text-[#ca8a04] text-xs tracking-[0.4em] uppercase mb-4">
             Le nostre strutture
           </p>
-          <h2 className="font-['var(--font-playfair)'] text-4xl md:text-5xl font-bold text-[#f0ece4] leading-tight">
+          <h2 className="font-['var(--font-cormorant)'] text-4xl md:text-5xl font-bold text-[#f5f0e8] leading-tight">
             Due poligoni,{" "}
-            <span className="text-[#c9a04a] italic">un&apos;unica</span>{" "}
+            <span className="text-[#ca8a04] italic">un&apos;unica</span>{" "}
             eccellenza.
           </h2>
         </div>
@@ -68,14 +68,14 @@ export default function Facilities() {
           {facilities.map((f, i) => (
             <div
               key={f.name}
-              className="relative border border-[#1f1f1f] p-10 group hover:border-[#c9a04a]/30 transition-colors duration-500"
+              className="relative border border-[#1f1f1f] p-10 group hover:border-[#ca8a04]/30 transition-colors duration-500"
               style={{
                 animation: visible ? `fadeUp 0.8s ease ${0.2 + i * 0.2}s both` : "none",
               }}
             >
               {/* Corner accents */}
-              <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-[#c9a04a]/0 group-hover:border-[#c9a04a] transition-colors duration-500" />
-              <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-[#c9a04a]/0 group-hover:border-[#c9a04a] transition-colors duration-500" />
+              <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-[#ca8a04]/0 group-hover:border-[#ca8a04] transition-colors duration-500" />
+              <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-[#ca8a04]/0 group-hover:border-[#ca8a04] transition-colors duration-500" />
 
               {/* Tag */}
               <div className="inline-block border border-[#222] text-[#555] text-[10px] tracking-[0.3em] uppercase px-3 py-1.5 mb-8">
@@ -86,10 +86,10 @@ export default function Facilities() {
               <div className="w-full h-48 bg-[#0f0f0f] border border-[#1a1a1a] flex items-center justify-center mb-8 overflow-hidden">
                 <div className="flex flex-col items-center gap-4 opacity-30">
                   <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                    <circle cx="24" cy="24" r="18" stroke="#c9a04a" strokeWidth="1" />
-                    <circle cx="24" cy="24" r="10" stroke="#c9a04a" strokeWidth="1" strokeDasharray="3 3" />
-                    <circle cx="24" cy="24" r="4" stroke="#c9a04a" strokeWidth="1" />
-                    <circle cx="24" cy="24" r="1.5" fill="#c9a04a" />
+                    <circle cx="24" cy="24" r="18" stroke="#ca8a04" strokeWidth="1" />
+                    <circle cx="24" cy="24" r="10" stroke="#ca8a04" strokeWidth="1" strokeDasharray="3 3" />
+                    <circle cx="24" cy="24" r="4" stroke="#ca8a04" strokeWidth="1" />
+                    <circle cx="24" cy="24" r="1.5" fill="#ca8a04" />
                   </svg>
                   <span className="text-[#444] text-xs tracking-widest uppercase">
                     Foto in arrivo
@@ -97,7 +97,7 @@ export default function Facilities() {
                 </div>
               </div>
 
-              <h3 className="font-['var(--font-playfair)'] text-2xl font-bold text-[#f0ece4] mb-4">
+              <h3 className="font-['var(--font-cormorant)'] text-2xl font-bold text-[#f5f0e8] mb-4">
                 {f.name}
               </h3>
               <p className="text-[#555] text-sm leading-relaxed mb-8">
@@ -108,7 +108,7 @@ export default function Facilities() {
               <div className="grid grid-cols-3 gap-4 pt-8 border-t border-[#1a1a1a]">
                 {f.specs.map((spec) => (
                   <div key={spec.label}>
-                    <div className="text-[#c9a04a] text-sm font-semibold mb-1">
+                    <div className="text-[#ca8a04] text-sm font-semibold mb-1">
                       {spec.value}
                     </div>
                     <div className="text-[#444] text-[10px] tracking-[0.2em] uppercase">
@@ -133,10 +133,10 @@ export default function Facilities() {
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                 <path
                   d="M7 1C4.8 1 3 2.8 3 5c0 3 4 8 4 8s4-5 4-8c0-2.2-1.8-4-4-4z"
-                  stroke="#c9a04a"
+                  stroke="#ca8a04"
                   strokeWidth="1.2"
                 />
-                <circle cx="7" cy="5" r="1.5" stroke="#c9a04a" strokeWidth="1.2" />
+                <circle cx="7" cy="5" r="1.5" stroke="#ca8a04" strokeWidth="1.2" />
               </svg>
             </div>
             <span className="text-[#666] text-sm">
@@ -148,14 +148,14 @@ export default function Facilities() {
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
               <path
                 d="M2 2.5c0-.3.2-.5.5-.5h2l1 3-1.5 1.5a9 9 0 004 4l1.5-1.5 3 1v2c0 .3-.2.5-.5.5C5.6 12.5 1.5 8.4 2 2.5z"
-                stroke="#c9a04a"
+                stroke="#ca8a04"
                 strokeWidth="1.2"
                 strokeLinejoin="round"
               />
             </svg>
             <a
               href="tel:082574254"
-              className="text-[#666] text-sm hover:text-[#c9a04a] transition-colors"
+              className="text-[#666] text-sm hover:text-[#ca8a04] transition-colors"
             >
               0825 74254
             </a>

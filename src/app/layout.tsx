@@ -1,17 +1,19 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Jost, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const jost = Jost({
+  variable: "--font-jost",
   subsets: ["latin"],
   display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
   subsets: ["latin"],
   display: "swap",
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -29,7 +31,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="it" className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="it" className={`${jost.variable} ${cormorant.variable}`}>
       <body className="min-h-screen bg-[#080808] text-[#f0ece4] antialiased">
         {children}
       </body>

@@ -59,12 +59,12 @@ export default function HowToJoin() {
             <div
               style={{ animation: visible ? "fadeUp 0.7s ease 0.1s both" : "none" }}
             >
-              <p className="text-[#c9a04a] text-xs tracking-[0.4em] uppercase mb-4">
+              <p className="text-[#ca8a04] text-xs tracking-[0.4em] uppercase mb-4">
                 Come iscriversi
               </p>
-              <h2 className="font-['var(--font-playfair)'] text-4xl font-bold text-[#f0ece4] leading-tight mb-16">
+              <h2 className="font-['var(--font-cormorant)'] text-4xl font-bold text-[#f5f0e8] leading-tight mb-16">
                 Inizia il tuo percorso{" "}
-                <span className="text-[#c9a04a] italic">in 4 passi</span>.
+                <span className="text-[#ca8a04] italic">in 4 passi</span>.
               </h2>
             </div>
 
@@ -78,12 +78,12 @@ export default function HowToJoin() {
                   }}
                 >
                   <div className="shrink-0 pt-1">
-                    <span className="font-['var(--font-playfair)'] text-3xl font-bold text-[#c9a04a]/20">
+                    <span className="font-['var(--font-cormorant)'] text-3xl font-bold text-[#ca8a04]/20">
                       {s.n}
                     </span>
                   </div>
                   <div>
-                    <h3 className="text-[#f0ece4] font-semibold mb-2">{s.title}</h3>
+                    <h3 className="text-[#f5f0e8] font-semibold mb-2">{s.title}</h3>
                     <p className="text-[#555] text-sm leading-relaxed">{s.desc}</p>
                   </div>
                 </div>
@@ -98,10 +98,10 @@ export default function HowToJoin() {
             {/* Downloads */}
             <div className="border border-[#1a1a1a] p-8 mb-8">
               <div className="relative">
-                <div className="absolute -top-px -left-px w-8 h-8 border-t border-l border-[#c9a04a]" />
-                <div className="absolute -bottom-px -right-px w-8 h-8 border-b border-r border-[#c9a04a]" />
+                <div className="absolute -top-px -left-px w-8 h-8 border-t border-l border-[#ca8a04]" />
+                <div className="absolute -bottom-px -right-px w-8 h-8 border-b border-r border-[#ca8a04]" />
               </div>
-              <p className="text-[#c9a04a] text-xs tracking-[0.4em] uppercase mb-6">
+              <p className="text-[#ca8a04] text-xs tracking-[0.4em] uppercase mb-6">
                 Modulistica
               </p>
               <div className="space-y-3">
@@ -109,9 +109,9 @@ export default function HowToJoin() {
                   <a
                     key={d.label}
                     href={d.href}
-                    className="flex items-center justify-between gap-4 py-3 border-b border-[#1a1a1a] last:border-0 group hover:text-[#c9a04a] transition-colors"
+                    className="flex items-center justify-between gap-4 py-3 border-b border-[#1a1a1a] last:border-0 group hover:text-[#ca8a04] transition-colors"
                   >
-                    <span className="text-[#666] group-hover:text-[#c9a04a] text-sm transition-colors">
+                    <span className="text-[#666] group-hover:text-[#ca8a04] text-sm transition-colors">
                       {d.label}
                     </span>
                     <svg
@@ -119,7 +119,7 @@ export default function HowToJoin() {
                       height="14"
                       viewBox="0 0 14 14"
                       fill="none"
-                      className="text-[#333] group-hover:text-[#c9a04a] shrink-0 transition-colors"
+                      className="text-[#333] group-hover:text-[#ca8a04] shrink-0 transition-colors"
                     >
                       <path
                         d="M7 2v7M4 6l3 3 3-3M2 11h10"
@@ -135,8 +135,8 @@ export default function HowToJoin() {
             </div>
 
             {/* CTA card */}
-            <div className="bg-[#c9a04a] p-8">
-              <h3 className="font-['var(--font-playfair)'] text-2xl font-bold text-[#080808] mb-3">
+            <div className="bg-[#ca8a04] p-8">
+              <h3 className="font-['var(--font-cormorant)'] text-2xl font-bold text-[#080808] mb-3">
                 Pronto a iniziare?
               </h3>
               <p className="text-[#5a3e10] text-sm leading-relaxed mb-6">
@@ -145,7 +145,7 @@ export default function HowToJoin() {
               </p>
               <Link
                 href="#contatti"
-                className="inline-flex items-center gap-3 bg-[#080808] text-[#c9a04a] text-xs font-semibold tracking-[0.25em] uppercase px-6 py-3 hover:bg-[#111] transition-colors"
+                className="inline-flex items-center gap-3 bg-[#080808] text-[#ca8a04] text-xs font-semibold tracking-[0.25em] uppercase px-6 py-3 hover:bg-[#111] transition-colors"
               >
                 Contattaci
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
