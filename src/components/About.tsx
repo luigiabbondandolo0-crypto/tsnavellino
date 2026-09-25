@@ -11,9 +11,9 @@ const timeline = [
 
 const photos = [
   { src: "/images/gallery-4.jpg", alt: "Team TSN Avellino a Chambéry — competizione internazionale", span: "col-span-2" },
-  { src: "/images/gallery-5.jpg", alt: "Giovani atleti TSN con medaglie", span: "col-span-1 row-span-2" },
+  { src: "/images/gallery-5.jpg", alt: "Giovani atleti TSN con medaglie", span: "col-span-1 md:row-span-2" },
   { src: "/images/gallery-2.jpg", alt: "Atleta TSN in gara", span: "col-span-1" },
-  { src: "/images/gallery-1.jpg", alt: "Tiro di precisione al poligono", span: "col-span-1" },
+  { src: "/images/gallery-1.jpg", alt: "Tiro di precisione al poligono", span: "col-span-2 md:col-span-1" },
 ];
 
 export default function About() {
@@ -113,8 +113,8 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.65, delay: 0.15, ease: "easeOut" }}
-            className="grid grid-cols-3 gap-3"
-            style={{ gridAutoRows: "160px" }}
+            className="grid grid-cols-2 md:grid-cols-3 gap-3"
+            style={{ gridAutoRows: "140px" }}
           >
             {photos.map((photo, i) => (
               <motion.div

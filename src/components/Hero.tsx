@@ -35,14 +35,14 @@ export default function Hero() {
       />
 
       {/* Content */}
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
 
         {/* Badge */}
         <motion.div
           initial={reduce ? {} : { opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="flex items-center justify-center gap-3 mb-12"
+          className="flex items-center justify-center gap-3 mb-8 sm:mb-12"
         >
           <div className="h-px w-12 bg-[#CA8A04]" />
           <span className="text-[#CA8A04] text-[11px] tracking-[0.42em] uppercase font-medium">
@@ -56,7 +56,7 @@ export default function Hero() {
           initial={reduce ? {} : { opacity: 0, y: 32 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-          className="font-bold leading-[0.9] tracking-tight mb-10 text-[#0C0A09]"
+          className="font-bold leading-[0.9] tracking-tight mb-7 sm:mb-10 text-[#0C0A09]"
           style={{
             fontFamily: "var(--font-display)",
             fontSize: "clamp(4.5rem, 12vw, 9.5rem)",
@@ -72,7 +72,7 @@ export default function Hero() {
           initial={reduce ? {} : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.35, ease: "easeOut" }}
-          className="text-[#57534E] text-lg md:text-xl max-w-xl mx-auto leading-relaxed mb-12"
+          className="text-[#57534E] text-base sm:text-lg md:text-xl max-w-xl mx-auto leading-relaxed mb-8 sm:mb-12"
         >
           La sezione di Tiro a Segno Nazionale più storica dell&apos;Irpinia.{" "}
           <span className="text-[#0C0A09] font-semibold">
@@ -103,7 +103,7 @@ export default function Hero() {
             href="#strutture"
             whileHover={reduce ? {} : { scale: 1.03 }}
             whileTap={reduce ? {} : { scale: 0.97 }}
-            className="inline-flex items-center gap-2.5 border-2 border-[#0C0A09]/15 text-[#0C0A09] font-bold tracking-wide px-9 py-4 rounded-xl text-sm hover:border-[#CA8A04] hover:text-[#CA8A04] transition-all duration-200 cursor-pointer"
+            className="inline-flex items-center gap-2.5 border-2 border-[#0C0A09]/15 text-[#0C0A09] font-bold tracking-wide px-6 sm:px-9 py-4 rounded-xl text-sm hover:border-[#CA8A04] hover:text-[#CA8A04] transition-all duration-200 cursor-pointer"
           >
             Scopri i Poligoni
           </motion.a>
@@ -114,7 +114,7 @@ export default function Hero() {
           initial={reduce ? {} : { opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.75, ease: "easeOut" }}
-          className="mt-20 grid grid-cols-3 gap-3 max-w-2xl mx-auto"
+          className="mt-12 sm:mt-20 grid grid-cols-3 gap-2 sm:gap-3 max-w-2xl mx-auto"
         >
           {heroImages.map((img, i) => (
             <motion.div
@@ -131,7 +131,7 @@ export default function Hero() {
                 sizes="(max-width: 768px) 33vw, 220px"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-              <span className="absolute bottom-2 left-2.5 text-white text-[9px] tracking-widest uppercase font-semibold">
+              <span className="absolute bottom-2 left-2.5 text-white text-[10px] tracking-widest uppercase font-semibold">
                 {img.label}
               </span>
             </motion.div>

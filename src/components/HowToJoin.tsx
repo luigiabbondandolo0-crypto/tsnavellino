@@ -36,8 +36,8 @@ export default function HowToJoin() {
   const reduce = useReducedMotion();
 
   return (
-    <section id="iscrizione" className="py-28 px-6 bg-[#F5F3EF]">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 lg:gap-24">
+    <section id="iscrizione" className="py-16 sm:py-24 lg:py-28 px-4 sm:px-6 bg-[#F5F3EF]">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 lg:gap-24">
 
         {/* Steps */}
         <div>
@@ -51,7 +51,7 @@ export default function HowToJoin() {
               Come iscriversi
             </p>
             <h2
-              className="text-5xl md:text-6xl font-bold text-[#0C0A09] leading-tight mb-14"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#0C0A09] leading-tight mb-10 md:mb-14"
               style={{ fontFamily: "var(--font-display)" }}
             >
               Inizia il tuo percorso{" "}

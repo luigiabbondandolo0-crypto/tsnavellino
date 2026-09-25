@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Montserrat, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 
@@ -16,6 +16,13 @@ const cormorant = Cormorant_Garamond({
   weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#CA8A04",
+};
 
 export const metadata: Metadata = {
   title: "T.S.N. Avellino — Dal 1892",

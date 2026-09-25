@@ -84,8 +84,9 @@
     text-decoration: none;
   }
 
-  button, [role="button"] {
+  button, [role="button"], a {
     cursor: pointer;
+    touch-action: manipulation;
   }
 
   :focus-visible {
@@ -109,8 +110,19 @@
 @layer components {
   /* Section wrapper */
   .tsn-section {
-    padding-block: var(--spacing-section);
-    padding-inline: 1.5rem;
+    padding-block: 4rem;
+    padding-inline: 1rem;
+  }
+  @media (min-width: 640px) {
+    .tsn-section {
+      padding-block: 5.5rem;
+      padding-inline: 1.5rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .tsn-section {
+      padding-block: var(--spacing-section);
+    }
   }
 
   .tsn-container {
@@ -171,7 +183,8 @@
     border-radius: 0.5rem;
     color: var(--color-ink);
     padding: 0.75rem 1rem;
-    font-size: 0.875rem;
+    /* 16px prevents iOS Safari auto-zoom on focus */
+    font-size: 1rem;
     transition: border-color 0.15s ease, box-shadow 0.15s ease;
   }
   .tsn-input::placeholder { color: var(--color-border-muted); }
